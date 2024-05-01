@@ -23,6 +23,7 @@ params_2 = ReservoirParameters(
 )
 status = ReservoirStatus(
     id="teste",
+    water_height=223.0,
     water_flow_in=100.0,
     water_flow_out=50.0,
     water_humidity=70.0,
@@ -32,9 +33,9 @@ status = ReservoirStatus(
 )
 
 # Chamar o método post_reservoir_parameters e passar o objeto params como argumento
-# RecordsDB.post_reservoir_parameters(params)
-# RecordsDB.post_reservoir_parameters(params_2)
-# RecordsDB.post_reservoir_status(status)
+RecordsDB.post_reservoir_parameters(params)
+RecordsDB.post_reservoir_parameters(params_2)
+RecordsDB.post_reservoir_status(status)
 
 RecordsDB.update_height(7,"teste")
 RecordsDB.update_records_limit_1(60,"teste")

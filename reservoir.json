@@ -1,0 +1,20 @@
+{
+    "teste": {
+        "id": "teste",
+        "name": "Caixa do Daniel",
+        "well": false,
+        "height": 7,
+        "alert_limit_1": 60,
+        "alert_limit_2": 70,
+        "alert_limit_3": 80
+    },
+    "teste2": {
+        "id": "teste2",
+        "name": "teste_water_tank",
+        "well": false,
+        "height": 10500,
+        "alert_limit_1": 20.0,
+        "alert_limit_2": 30.0,
+        "alert_limit_3": 40.0
+    }
+}
