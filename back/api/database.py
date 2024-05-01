@@ -5,7 +5,7 @@ from datetime import datetime
 
 host = "us-east-1-1.aws.cloud2.influxdata.com"
 org = "MAUAguas"
-token = "Mk8TL0uqC_Fnx1C4FKddl0fH2_G-0e_e6Ji68N6H7mwrDcZMnw5LxMQrQCsk0Y5L3yrQTNHCOCAjGv4ioUX9qA=="
+token = ""
 client=InfluxDBClient3(host=host,org=org,token=token)
 # client.switch_database("water_tank")
 
@@ -50,6 +50,7 @@ class DataBase:
                     "id": status.id
                 },
                 "fields": {
+                    "water_height" : status.water_height,
                     "water_flow_in": status.water_flow_in,
                     "water_flow_out": status.water_flow_out,
                     "water_humidity": status.water_humidity,

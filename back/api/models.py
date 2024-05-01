@@ -19,6 +19,7 @@ class ReservoirParameters:
 
 class ReservoirStatus:
     id: str
+    water_height: float
     water_flow_in: float
     water_flow_out: float
     water_humidity: float
@@ -26,8 +27,9 @@ class ReservoirStatus:
     time_stamp: datetime
     bomb_hours: float
     
-    def __init__(self, id, water_flow_in, water_flow_out, water_humidity, water_voltage, time_stamp, bomb_hours):
+    def __init__(self, id,water_height, water_flow_in, water_flow_out, water_humidity, water_voltage, time_stamp, bomb_hours):
         self.id = id
+        self.water_height = water_height
         self.water_flow_in = water_flow_in
         self.water_flow_out = water_flow_out
         self.water_humidity = water_humidity

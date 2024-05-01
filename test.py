@@ -23,6 +23,7 @@ params_2 = ReservoirParameters(
 )
 status = ReservoirStatus(
     id="teste",
+    water_height=223.0,
     water_flow_in=100.0,
     water_flow_out=50.0,
     water_humidity=70.0,
