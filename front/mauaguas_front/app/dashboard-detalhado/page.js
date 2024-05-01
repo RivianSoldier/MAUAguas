@@ -1,9 +1,9 @@
 import NavBar from '@/components/NavBar';
 
-export default function VisaoGeral() {
+export default function DashboardDetalhado() {
     return (
         <main className="flex min-h-screen flex-col items-center justify-center bg-[#303030]">
-            <NavBar activePage="visao-geral" />
+            <NavBar activePage="dashboard-detalhado"/>
         </main>
     )
 }
