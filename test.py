@@ -32,9 +32,9 @@ status = ReservoirStatus(
 )
 
 # Chamar o método post_reservoir_parameters e passar o objeto params como argumento
-# RecordsDB.post_reservoir_parameters(params)
-# RecordsDB.post_reservoir_parameters(params_2)
-# RecordsDB.post_reservoir_status(status)
+RecordsDB.post_reservoir_parameters(params)
+RecordsDB.post_reservoir_parameters(params_2)
+RecordsDB.post_reservoir_status(status)
 
 RecordsDB.update_height(7,"teste")
 RecordsDB.update_records_limit_1(60,"teste")

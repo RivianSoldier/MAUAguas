@@ -1,11 +1,13 @@
-from influxdb import InfluxDBClient
+from influxdb_client_3 import InfluxDBClient3
 from back.api.models import ReservoirParameters, ReservoirStatus
 import json
 from datetime import datetime
 
-
-client=InfluxDBClient(host="localhost",port="8086")
-client.switch_database("water_tank")
+host = "us-east-1-1.aws.cloud2.influxdata.com"
+org = "MAUAguas"
+token = "Mk8TL0uqC_Fnx1C4FKddl0fH2_G-0e_e6Ji68N6H7mwrDcZMnw5LxMQrQCsk0Y5L3yrQTNHCOCAjGv4ioUX9qA=="
+client=InfluxDBClient3(host=host,org=org,token=token)
+# client.switch_database("water_tank")
 
 # Linha para testar a conexão com o banco, apenas mostrar as databases criadas
 # É necessário ter o influxDB baixado de forma local, com um server rodando
@@ -57,7 +59,7 @@ class DataBase:
                 }
             }
         ]
-        client.write_points(json_body)
+        client.write(database='water_tank', record=json_body)
         print("Reservoir status posted successfully.")
 
     @staticmethod
@@ -159,10 +161,12 @@ class DataBase:
     @staticmethod
     def get_reservoir_status_by_id(id:str):
         query = f'SELECT * FROM "reservoir_status" WHERE "id"=\'{id}\' ORDER BY time DESC'
-        result = client.query(query)
+        result = client.query(query=query, mode="all", language="sql")
         return list(result.get_points())
+
     
+    @staticmethod
     def get_lastest_reservoir_status_by_id(id:str):
         query = f'SELECT * FROM "reservoir_status" WHERE "id"=\'{id}\' ORDER BY time DESC LIMIT 1'
-        result = client.query(query)
+        result = client.query(query, params={'id': id})
         return result
