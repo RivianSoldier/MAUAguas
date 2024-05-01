@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from 'next/link';
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
@@ -34,9 +35,11 @@ export default function Home() {
             </Button>
           </div>
           <div className="flex flex-row w-full mx-4 justify-end items-end lg:justify-end lg:items-center lg:w-[26rem] mt-8 px-6 md:px-20 lg:px-0">
-            <Button className=" bg-[#3270B8] text-white flex" variant="primary">
-              Entrar
-            </Button>
+            <Link href="/visao-geral">
+              <Button className=" bg-[#3270B8] text-white flex hover:bg-[#2D64A5] hover:bg-opacity-50 rounded-md transition duration-300 cursor-pointer" variant="primary">
+                Entrar
+              </Button>
+            </Link>
           </div>
         </div>
       </div>
