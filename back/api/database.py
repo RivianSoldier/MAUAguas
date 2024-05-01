@@ -161,12 +161,15 @@ class DataBase:
     @staticmethod
     def get_reservoir_status_by_id(id:str):
         query = f'SELECT * FROM "reservoir_status" WHERE "id"=\'{id}\' ORDER BY time DESC'
-        result = client.query(query=query, mode="all", language="sql")
-        return list(result.get_points())
+        result = client.query(query=query, database="water_tank", language="sql")
+        print(result)
+        return result
+
 
     
     @staticmethod
     def get_lastest_reservoir_status_by_id(id:str):
         query = f'SELECT * FROM "reservoir_status" WHERE "id"=\'{id}\' ORDER BY time DESC LIMIT 1'
-        result = client.query(query, params={'id': id})
+        result = client.query(query=query, database="water_tank", language="sql")
+        print(result)
         return result
