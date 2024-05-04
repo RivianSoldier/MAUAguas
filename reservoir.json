@@ -1,12 +1,12 @@
 {
     "teste": {
         "id": "teste",
-        "name": "Caixa do Daniel",
+        "name": "caixa_do_raul",
         "well": false,
-        "height": 7,
-        "alert_limit_1": 60,
-        "alert_limit_2": 70,
-        "alert_limit_3": 80
+        "height": 15.0,
+        "alert_limit_1": 12.0,
+        "alert_limit_2": 69.0,
+        "alert_limit_3": 11971150204.0
     },
     "teste2": {
         "id": "teste2",
@@ -16,5 +16,14 @@
         "alert_limit_1": 20.0,
         "alert_limit_2": 30.0,
         "alert_limit_3": 40.0
+    },
+    "teste_3": {
+        "id": "teste_3",
+        "name": "Reservoir A",
+        "well": "Well A",
+        "height": 10.5,
+        "alert_limit_1": 50.0,
+        "alert_limit_2": 30.0,
+        "alert_limit_3": 10.0
     }
 }

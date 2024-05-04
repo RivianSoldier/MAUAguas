@@ -6,7 +6,6 @@ from datetime import datetime
 host = "us-east-1-1.aws.cloud2.influxdata.com"
 org = "MAUAguas"
 token = ""
-client=InfluxDBClient3(host=host,org=org,token=token)
 # client.switch_database("water_tank")
 
 # Linha para testar a conexão com o banco, apenas mostrar as databases criadas
@@ -87,7 +86,7 @@ class DataBase:
             data[id]["height"] = height
             with open('reservoir.json', 'w') as json_file:
                 json.dump(data, json_file, indent=4)
-            print("Height updated successfully")
+            return "Height updated successfully"
             
     def update_name(name: str, id: str):
         try:
@@ -100,7 +99,7 @@ class DataBase:
             data[id]["name"] = name
             with open('reservoir.json', 'w') as json_file:
                 json.dump(data, json_file, indent=4)
-            print("Name updated successfully")
+            return "Name updated successfully"
 
     @staticmethod
     def update_alert_limit_1(alert_limit_1:float, id:str):
@@ -114,7 +113,7 @@ class DataBase:
             data[id]["alert_limit_1"] = alert_limit_1
             with open('reservoir.json', 'w') as json_file:
                 json.dump(data, json_file, indent=4)
-            print("Alert Limit 1 updated successfully")
+            return "Alert Limit 1 updated successfully"
 
     
     @staticmethod
@@ -129,7 +128,7 @@ class DataBase:
             data[id]["alert_limit_2"] = alert_limit_2
             with open('reservoir.json', 'w') as json_file:
                 json.dump(data, json_file, indent=4)
-            print("Alert Limit 2 updated successfully")
+            return "Alert Limit 2 updated successfully"
     
     @staticmethod
     def update_alert_limit_3(alert_limit_3:float, id:str):
@@ -143,7 +142,7 @@ class DataBase:
             data[id]["alert_limit_3"] = alert_limit_3
             with open('reservoir.json', 'w') as json_file:
                 json.dump(data, json_file, indent=4)
-            print("Alert Limit 3 updated successfully")
+            return"Alert Limit 3 updated successfully"
             
     @staticmethod
     def get_reservoir_by_id(id:str):
@@ -174,3 +173,12 @@ class DataBase:
         result = client.query(query=query, database="water_tank", language="sql")
         print(result)
         return result
+    
+    @staticmethod
+    def get_reservoirs():
+        try:
+            with open('reservoir.json', 'r') as json_file:
+                data = json.load(json_file)
+        except FileNotFoundError:
+            return False
+        return data
