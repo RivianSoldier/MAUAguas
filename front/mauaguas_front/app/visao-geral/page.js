@@ -4,9 +4,9 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 export default function VisaoGeral() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-center bg-[#303030]">
-            <NavBar activePage="visao-geral" />
-            <Tabs defaultValue="nivel" className="w-full">
+        <main className="flex min-h-screen flex-col bg-[#303030]">
+            <NavBar activePage="visao-geral"/>
+            <Tabs defaultValue="nivel" className="w-full mt-32">
                 <div className='flex justify-between mx-10 text-2.5xl'>
                     <p className='text-white font-bold'>Dashboard  Geral</p>
                     <div>
