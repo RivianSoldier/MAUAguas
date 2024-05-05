@@ -12,18 +12,16 @@ import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
 export default function VisaoGeral() {
-    const [position, setPosition] = React.useState("bottom")
 
     return (
         <main className="flex min-h-screen flex-col bg-[#303030]">
             <NavBar activePage="visao-geral" />
             <Tabs defaultValue="nivel" className="w-full mt-32 h-full">
-                <div className='flex justify-between mx-10 text-2.5xl'>
+                <div className='flex justify-between mx-10 text-2.5xl items-center'>
                     <p className='text-white font-bold'>Dashboard  Geral</p>
                     <div className='flex items-center justify-around'>
                         <DropdownMenu>
