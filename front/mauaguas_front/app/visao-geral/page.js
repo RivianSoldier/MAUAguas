@@ -34,10 +34,10 @@ export default function VisaoGeral() {
                                 <p className='m-2 font-bold'>Filtrar por</p>
                                 <Separator className='bg-[#616161]'/>
                                 <DropdownMenuLabel>Tipo</DropdownMenuLabel>
-                                    <CheckboxList names={["Selecionar Tudo", "Caixas D'água", "Poço"]} />
+                                    <CheckboxList type={"tipo"} names={["Selecionar Tudo", "Caixas D'água", "Poço"]} />
                                 <Separator className='bg-[#616161]'/>
                                 <DropdownMenuLabel>Limite</DropdownMenuLabel>
-                                    <CheckboxList names={["Selecionar Tudo", "Padrão", "Menos Grave", "Grave", "Mais Grave"]} />
+                                    <CheckboxList type={"limite"} names={["Selecionar Tudo", "Padrão", "Menos Grave", "Grave", "Mais Grave"]} />
                             </DropdownMenuContent>
                         </DropdownMenu>
                         <TabsList className='bg-[#3B3B3B] rounded-xl px-0 py-6'>
