@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function NavBar({ activePage }) {
   return (
     <header className="bg-[#3270B8] h-20 p-4 w-full fixed top-0">
-      <div className="max-w-7xl mx-auto h-full flex justify-between items-center">
+      <div className="max-w-full mx-auto h-full flex justify-between items-center">
         <div className="rounded-xl">
           <Image src="/logo_01.svg" alt="Logo" width={55} height={55} />
         </div>
@@ -34,7 +34,7 @@ function NavItem({ href, active, children }) {
   return (
     <Link href={href}>
       <p
-        className={`text-white px-5 py-7 rounded-md transition duration-300 mr-4 cursor-pointer ${
+        className={`text-white px-5 py-7 rounded-md transition duration-300  cursor-pointer ${
           active
             ? "font-bold underline decoration-2 underline-offset-[6px]"
             : "hover:bg-[#285993] hover:underline underline-offset-[6px] hover:bg-opacity-50"
