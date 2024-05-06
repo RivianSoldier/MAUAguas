@@ -20,13 +20,13 @@ export default function VisaoGeral() {
     return (
         <main className="flex min-h-screen flex-col bg-[#303030]">
             <NavBar activePage="visao-geral" />
-            <Tabs defaultValue="nivel" className="w-full mt-32 h-full">
-                <div className='flex justify-between mx-10 text-2.5xl items-center'>
-                    <p className='text-white font-bold'>Dashboard  Geral</p>
-                    <div className='flex items-center justify-around'>
+            <Tabs defaultValue="nivel" className="w-full mt-32 h-full flex-col">
+                <div className='flex flex-col justify-between sm:flex-row mx-10 text-2.5xl items-center'>
+                    <p className='text-white font-bold min-w-[229px]'>Dashboard  Geral</p>
+                    <div className='flex items-center justify-around '>
                         <DropdownMenu>
                             <DropdownMenuTrigger asChild>
-                                <Button className="mr-10 py-6 bg-[#3B3B3B] flex hover:bg-[#616161] hover:bg-opacity-50 rounded-xl transition duration-300 cursor-pointer" variant="primary">
+                                <Button className="min-w-[60px] mr-10 py-6 bg-[#3B3B3B] flex hover:bg-[#616161] hover:bg-opacity-50 rounded-xl transition duration-300 cursor-pointer" variant="primary">
                                     <Image src="/options.svg" alt="Filters" width={25} height={25} />
                                 </Button>
                             </DropdownMenuTrigger>
