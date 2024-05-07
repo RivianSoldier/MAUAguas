@@ -12,6 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { CardUpdate } from "@/components/ui/card-update";
+import { Search } from "lucide-react";
 
 export default function DashboardDetalhado() {
   return (
@@ -30,10 +31,13 @@ export default function DashboardDetalhado() {
         </div>
         <div className="flex flex-row justify-between mx-10 mt-10">
           <div className="flex gap-4">
-            <Input
-              placeholder="Procurar..."
-              className="bg-[#505050] border-none text-white w-full h-12"
-            />
+            <div className="relative">
+              <Input
+                placeholder="Procurar..."
+                className="bg-[#505050] border-none text-white w-72 h-12"
+              />
+              <Search className="absolute right-2 top-3.5 h-5 w-5 text-white" />
+            </div>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button
