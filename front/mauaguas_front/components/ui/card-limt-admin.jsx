@@ -8,11 +8,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Image from "next/image";
 
 function LimtCard({ title, color }) {
   return (
-    <Card className="w-[17.5rem] h-[13.375rem] bg-[#3B3B3B] border-none ml-10 drop-shadow-lg">
+    <Card
+      className="flex-grow 
+     w-[17.5rem]  bg-[#3B3B3B] border-none drop-shadow-lg  max-w-full mx-6 mb-10"
+    >
       <CardHeader>
         <div className="flex items-center">
           <svg
