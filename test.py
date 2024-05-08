@@ -46,3 +46,5 @@ print(RecordsDB.get_reservoir_by_id("teste"))
 
 print(RecordsDB.get_reservoir_status_by_id("teste"))
 print(RecordsDB.get_lastest_reservoir_status_by_id("teste"))
+
+print(RecordsDB.get_lastest_reservoir_status_by_id("teste"))

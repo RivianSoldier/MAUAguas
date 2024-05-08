@@ -5,7 +5,8 @@ from datetime import datetime
 
 host = "us-east-1-1.aws.cloud2.influxdata.com"
 org = "MAUAguas"
-token = ""
+token = "NylhL3I74w3vMM8kOScKhZ_BB4K-E1TKyLM2KkmWdPnvPLJwz78BuE-SpPjMEeXQuydo0YtnT_56-_iKnG-ejA=="
+client=InfluxDBClient3(host=host,org=org,token=token)
 # client.switch_database("water_tank")
 
 # Linha para testar a conexão com o banco, apenas mostrar as databases criadas
@@ -39,28 +40,30 @@ class DataBase:
             json.dump(data, json_file, indent=4) 
         print("Reservoir parameters posted successfully.")
 
-    @staticmethod
     def post_reservoir_status(status: ReservoirStatus):
-        time_stamp_str = status.time_stamp.isoformat()  # Converter para ISO 8601
-        json_body = [
-            {
-                "measurement": "reservoir_status",
-                "tags": {
-                    "id": status.id
-                },
-                "fields": {
-                    "water_height" : status.water_height,
-                    "water_flow_in": status.water_flow_in,
-                    "water_flow_out": status.water_flow_out,
-                    "water_humidity": status.water_humidity,
-                    "water_voltage": status.water_voltage,
-                    "time_stamp": time_stamp_str,  # Usar a string formatada ISO 8601
-                    "bomb_hours": status.bomb_hours
+        try:
+            time_stamp_str = status.time_stamp.isoformat()  # Converter para ISO 8601
+            json_body = [
+                {
+                    "measurement": "reservoir_status",
+                    "tags": {
+                        "id": status.id
+                    },
+                    "fields": {
+                        "water_height" : status.water_height,
+                        "water_flow_in": status.water_flow_in,
+                        "water_flow_out": status.water_flow_out,
+                        "water_humidity": status.water_humidity,
+                        "water_voltage": status.water_voltage,
+                        "time_stamp": time_stamp_str,  # Usar a string formatada ISO 8601
+                        "bomb_hours": status.bomb_hours
+                    }
                 }
-            }
-        ]
-        client.write(database='water_tank', record=json_body)
-        print("Reservoir status posted successfully.")
+            ]
+            client.write(database='water_tank', record=json_body)
+            return "Reservoir status posted successfully."
+        except Exception as e: 
+            return f"Failed to post status: {str(e)}"
 
     @staticmethod
     def id_exists(id:str):
@@ -171,7 +174,6 @@ class DataBase:
     def get_lastest_reservoir_status_by_id(id:str):
         query = f'SELECT * FROM "reservoir_status" WHERE "id"=\'{id}\' ORDER BY time DESC LIMIT 1'
         result = client.query(query=query, database="water_tank", language="sql")
-        print(result)
         return result
     
     @staticmethod

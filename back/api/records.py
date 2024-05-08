@@ -15,7 +15,8 @@ class RecordsDB:
         
     @staticmethod
     def post_reservoir_status(params: ReservoirStatus):
-        DataBase.post_reservoir_status(params)
+        response = DataBase.post_reservoir_status(params)
+        return response
         
     @staticmethod
     def update_height(height:float, id:str):
@@ -100,7 +101,6 @@ class RecordsDB:
     @staticmethod
     def get_lastest_reservoir_status_by_id(id: str):
         last_status = DataBase.get_lastest_reservoir_status_by_id(id)
-
         # Extracting values from nested lists
         bomb_hours = float(str(last_status["bomb_hours"][0]))
         id_value = (str(last_status["id"][0]))
@@ -130,4 +130,9 @@ class RecordsDB:
     @staticmethod
     def get_reservoirs():
         reservoirs = DataBase.get_reservoirs()
-        return reservoirs        
+        return reservoirs   
+    
+    @staticmethod
+    def id_existis(id:str):
+        is_id = DataBase.id_exists(id)
+        return is_id     

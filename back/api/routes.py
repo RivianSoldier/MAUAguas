@@ -2,6 +2,7 @@ from back.api.records import RecordsDB
 from flask import Blueprint, make_response, jsonify, request
 from datetime import datetime
 from back.api.models import ReservoirStatus, ReservoirParameters
+from simulator import Simulador
 
 bp = Blueprint('rotas', __name__)
 
@@ -96,3 +97,12 @@ def update_record_limit_2(id:str,limit:float):
 def update_record_limit_3(id:str,limit:float):
     response = RecordsDB.update_records_limit_3(limit,id)
     return response
+
+@bp.route("/start_simulator/<string:id>", methods=['GET'])
+def start_simulator(id:str):
+    is_id = RecordsDB.id_existis(id)
+    if is_id:
+        response = Simulador.start_simulador(id)
+        print(response)
+        return response
+    return "ID not exists on the database"
