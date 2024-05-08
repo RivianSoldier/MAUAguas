@@ -4,8 +4,8 @@ import Link from "next/link";
 export default function NavBar({ activePage }) {
   return (
     <header className="bg-[#3270B8] h-20 p-4 w-full fixed top-0">
-      <div className="max-w-full mx-auto h-full flex justify-between items-center">
-        <div className="rounded-xl">
+      <div className="max-w-7xl mx-auto h-full flex justify-between items-center">
+        <div className="rounded-xl min-w-[55px]">
           <Image src="/logo_01.svg" alt="Logo" width={55} height={55} />
         </div>
         <nav className="flex items-center h-full">
@@ -18,11 +18,13 @@ export default function NavBar({ activePage }) {
           >
             Dashboard Detalhado
           </NavItem>
+          <NavItem href="/controle" active={activePage === "controle"}>
+            <div className="min-w-[24px]">
+              <Image src="/settings.svg" alt="Settings" width={24} height={24} />
+            </div>
+          </NavItem>
           <NavItem href="/" active={activePage === "sair"}>
             Sair
-          </NavItem>
-          <NavItem href="/controle" active={activePage === "controle"}>
-            <Image src="/settings.svg" alt="Settings" width={24} height={24} />
           </NavItem>
         </nav>
       </div>
