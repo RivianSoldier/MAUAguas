@@ -1,5 +1,5 @@
 "use client";
-
+import { Progress } from "@/components/ui/progress"
 import NavBar from '@/components/NavBar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
@@ -47,7 +47,13 @@ export default function VisaoGeral() {
                     </div>
                 </div>
                 <div className='text-white mx-10'>
-                    <TabsContent value="nivel">Dashboard de Nível</TabsContent>
+                    <TabsContent value="nivel">
+                        <div className="relative">
+                            <div className="absolute border-2 rounded-lg w-[196px] h-[40px] z-20" />
+                            <div className="absolute border-2 rounded-lg w-[196px] h-[56px] z-10" />
+                            <Progress value={50} color="bg-[#89CAF9]" className="absolute w-[196px] z-0 top-0"/>
+                        </div>
+                    </TabsContent>
                     <TabsContent value="vazao">Dashboard de Vazão.</TabsContent>
                 </div>
             </Tabs>
