@@ -1,7 +1,7 @@
 import { Input } from "@/components/ui/input";
 export function CardUpdate() {
   return (
-    <div className="flex lg:col-span-1 col-span-2 min-h-36 justify-around items-center gap-6 text-white text-sm bg-[#3b3b3b] drop-shadow-lg rounded-lg px-2">
+    <div className="flex flex-row w-1/2 h-36 justify-around items-center gap-6 text-white text-sm bg-[#3b3b3b] drop-shadow-lg rounded-lg">
       <div className="flex flex-col gap-2">
         <p>ID</p>
         <p className="flex h-12 items-center">1</p>
