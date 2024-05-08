@@ -12,7 +12,7 @@ import Image from "next/image";
 
 function LimtCard({ title, color }) {
     return (
-        <Card className="w-[300px] bg-[#3B3B3B] border-none ml-10 mt-10">
+        <Card className="col-span-4 lg:col-span-1 md:col-span-2 bg-[#3B3B3B] border-none mx-10 mt-10 max-w-[400px] min-w-[250px]">
             <CardHeader>
                 <div className='flex items-center'>
                     <svg width="25px" height="25px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" fill="none">
