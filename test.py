@@ -1,50 +1,61 @@
 from back.api.database import DataBase
-from back.api.records import RecordsDB
-from back.api.models import ReservoirParameters, ReservoirStatus
-from datetime import datetime
-# Criar um objeto ReservoirParameters com os valores desejados
-params = ReservoirParameters(
-    id="teste",
-    height=10.5,
-    name="teste_water_tank",
-    well=False,
-    alert_limit_1=20.0,
-    alert_limit_2=30.0,
-    alert_limit_3=40.0
-)
-params_2 = ReservoirParameters(
-    id="teste2",
-    height=10.5,
-    name="teste_water_tank",
-    well=False,
-    alert_limit_1=20.0,
-    alert_limit_2=30.0,
-    alert_limit_3=40.0
-)
-status = ReservoirStatus(
-    id="teste",
-    water_height=223.0,
-    water_flow_in=100.0,
-    water_flow_out=50.0,
-    water_humidity=70.0,
-    water_voltage=12.0,
-    time_stamp=datetime.now(),
-    bomb_hours=10.0
-)
+import json
+from back.api.models import ReservoirParameters,ReservoirStatus
+import pytest
 
-# Chamar o método post_reservoir_parameters e passar o objeto params como argumento
-RecordsDB.post_reservoir_parameters(params)
-RecordsDB.post_reservoir_parameters(params_2)
-RecordsDB.post_reservoir_status(status)
+# Restante do código...
 
-RecordsDB.update_height(7,"teste")
-RecordsDB.update_records_limit_1(60,"teste")
-RecordsDB.update_records_limit_2(70,"teste")
-RecordsDB.update_records_limit_3(80,"teste")
-RecordsDB.update_name("Caixa do Daniel","teste")
-print(RecordsDB.get_reservoir_by_id("teste"))
 
-print(RecordsDB.get_reservoir_status_by_id("teste"))
-print(RecordsDB.get_lastest_reservoir_status_by_id("teste"))
+@pytest.fixture
+def mock_reservoir_params():
+    return ReservoirParameters(
+        id=1,
+        name="Reservoir 1",
+        well="Well 1",
+        height=10,
+        alert_limit_1=5,
+        alert_limit_2=8,
+        alert_limit_3=12
+    )
 
-print(RecordsDB.get_lastest_reservoir_status_by_id("teste"))
+def test_post_reservoir_parameters(mock_reservoir_params, mocker):
+    # Mocking file operations
+    mock_open = mocker.mock_open()
+    mocker.patch("builtins.open", mock_open)
+
+    # Call the function
+    DataBase.post_reservoir_parameters(mock_reservoir_params)
+
+    # Assert that the file was opened twice, once for reading and once for writing
+    mock_open.assert_has_calls([
+        mocker.call('reservoir.json', 'r'),
+        mocker.call('reservoir.json', 'w')
+    ])
+
+    # Check if data was written correctly
+    expected_data = {
+        1: {
+            "id": 1,
+            "name": "Reservoir 1",
+            "well": "Well 1",
+            "height": 10,
+            "alert_limit_1": 5,
+            "alert_limit_2": 8,
+            "alert_limit_3": 12
+        }
+    }
+    mock_open().write.assert_called_once_with(
+        json.dumps(expected_data, indent=4)
+    )
+
+    # Get all expected calls
+    expected_calls = [
+        mocker.call('Reservoir parameters posted successfully.')
+    ]
+
+    # Check if all expected calls are present
+    if all(call in mocker.stdout.mock_calls for call in expected_calls) and \
+            len(mocker.stdout.mock_calls) == len(expected_calls):
+        print("Test was successful!")
+    else:
+        print("Test failed!")
