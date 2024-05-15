@@ -1,11 +1,12 @@
 "use client";
-import { Progress } from "@/components/ui/progress"
 import NavBar from '@/components/NavBar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator"
 import { CheckboxList } from "@/components/ui/checkbox-list"
+import { Poco } from "@/components/ui/poco";
+import { Caixa } from "@/components/ui/caixa-volume";
 
 import * as React from "react";
 import {
@@ -46,12 +47,19 @@ export default function VisaoGeral() {
                         </TabsList>
                     </div>
                 </div>
-                <div className='text-white mx-10'>
+                <div className='text-white mx-10 mt-4'>
                     <TabsContent value="nivel">
-                        <div className="relative">
-                            <div className="absolute border-2 rounded-lg w-[196px] h-[40px] z-20" />
-                            <div className="absolute border-2 rounded-lg w-[196px] h-[56px] z-10" />
-                            <Progress value={50} color="bg-[#89CAF9]" className="absolute w-[196px] z-0 top-0"/>
+                        <div className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+                            <Poco volume={1500} capacidade={2500} />
+                            <Caixa volume={1500} capacidade={1500} nome={"Caixa 1"}></Caixa>
+                            <Caixa volume={500} capacidade={1500} nome={"Caixa 2"}></Caixa>
+                            <Caixa volume={500} capacidade={1500} nome={"Caixa 3"}></Caixa>
+                            <Caixa volume={500} capacidade={1500} nome={"Caixa 4"}></Caixa>
+                            <Caixa volume={500} capacidade={1500} nome={"Caixa 5"}></Caixa>
+                            <Caixa volume={500} capacidade={1500} nome={"Caixa 6"}></Caixa>
+                            <Caixa volume={500} capacidade={1500} nome={"Caixa 7"}></Caixa>
+                            <Caixa volume={500} capacidade={1500} nome={"Caixa 8"}></Caixa>
+                            <Caixa volume={500} capacidade={1500} nome={"Caixa 9"}></Caixa>
                         </div>
                     </TabsContent>
                     <TabsContent value="vazao">Dashboard de Vazão.</TabsContent>
