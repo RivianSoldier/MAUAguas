@@ -2,7 +2,7 @@ import { Progress } from "@/components/ui/progress";
 
 export function Caixa({ volume, nome, capacidade }) {
     return (
-        <div className="relative h-[250px] w-full bg-[#3B3B3B] rounded-lg row-span-1 col-span-1">
+        <div className="relative h-[250px] w-full bg-[#3B3B3B] rounded-lg row-span-1 col-span-1 shadow-lg">
             <p className="pl-7 py-6 font-bold text-lg">{`${ nome }`}</p>
             <div className="absolute inset-0 flex flex-col justify-center items-center pt-10">
                 <div className="relative flex flex-col items-center">

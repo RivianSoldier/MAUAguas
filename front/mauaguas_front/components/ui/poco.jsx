@@ -2,7 +2,7 @@ import { Progress } from "@/components/ui/progress";
 
 export function Poco({ volume, capacidade }) {
     return (
-        <div className="relative h-[515px] w-full min-w-[192px] bg-[#3B3B3B] rounded-lg row-span-2 col-span-1">
+        <div className="relative h-[515px] w-full min-w-[192px] bg-[#3B3B3B] rounded-lg row-span-2 col-span-1 drop-shadow-lg">
             <p className="pl-7 py-6 font-bold text-lg">Poço</p>
             <div className="absolute inset-0 flex flex-col justify-center items-center pt-10">
                 <div className="relative flex flex-col items-center">

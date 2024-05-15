@@ -47,7 +47,7 @@ export default function VisaoGeral() {
                         </TabsList>
                     </div>
                 </div>
-                <div className='text-white mx-10 mt-4'>
+                <div className='text-white mx-10 my-4'>
                     <TabsContent value="nivel">
                         <div className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
                             <Poco volume={1500} capacidade={2500} />
