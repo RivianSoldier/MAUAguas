@@ -1,61 +1,70 @@
 from back.api.database import DataBase
 import json
-from back.api.models import ReservoirParameters,ReservoirStatus
-import pytest
+from back.api.models import ReservoirParameters
+import datetime
 
-# Restante do código...
+def test_get():
+    dados_test = DataBase.get_reservoir_by_id("teste")
 
+    assert dados_test["id"] == "teste"
 
-@pytest.fixture
-def mock_reservoir_params():
-    return ReservoirParameters(
-        id=1,
-        name="Reservoir 1",
-        well="Well 1",
-        height=10,
-        alert_limit_1=5,
-        alert_limit_2=8,
-        alert_limit_3=12
-    )
-
-def test_post_reservoir_parameters(mock_reservoir_params, mocker):
-    # Mocking file operations
-    mock_open = mocker.mock_open()
-    mocker.patch("builtins.open", mock_open)
-
-    # Call the function
-    DataBase.post_reservoir_parameters(mock_reservoir_params)
-
-    # Assert that the file was opened twice, once for reading and once for writing
-    mock_open.assert_has_calls([
-        mocker.call('reservoir.json', 'r'),
-        mocker.call('reservoir.json', 'w')
-    ])
-
-    # Check if data was written correctly
-    expected_data = {
-        1: {
-            "id": 1,
-            "name": "Reservoir 1",
-            "well": "Well 1",
-            "height": 10,
-            "alert_limit_1": 5,
-            "alert_limit_2": 8,
-            "alert_limit_3": 12
-        }
+def test_post():
+    json_teste = {
+        "id": "testando",
+    "water_height": 10.0,
+    "water_flow_in": 12.0,
+    "water_flow_out": 9.6,
+    "water_humidity": 1.0,
+    "water_voltage": 12.0,
+    "time_stamp": "2024-05-15 21:40:41.025032670",
+    "bomb_hours": 50.0
     }
-    mock_open().write.assert_called_once_with(
-        json.dumps(expected_data, indent=4)
-    )
 
-    # Get all expected calls
-    expected_calls = [
-        mocker.call('Reservoir parameters posted successfully.')
-    ]
+    mensagem = DataBase.post_reservoir_status(json_teste)
 
-    # Check if all expected calls are present
-    if all(call in mocker.stdout.mock_calls for call in expected_calls) and \
-            len(mocker.stdout.mock_calls) == len(expected_calls):
-        print("Test was successful!")
-    else:
-        print("Test failed!")
+    assert mensagem == "Reservoir status posted successfully."
+
+def test_id_existe():
+    existe = DataBase.id_exists("teste")
+
+    assert existe == True
+
+def test_status_caixa():
+    status = DataBase.get_reservoir_status_by_id("teste")
+
+    assert status["id"] == "teste"
+
+def test_lastest_reservoir():
+    result = DataBase.get_lastest_reservoir_status_by_id("teste")
+
+    assert result["id"] == "teste"
+
+def test_id_caixa():
+    caixa = DataBase.id_exists("teste")
+
+    assert caixa == True
+
+def test_high_caixa():
+    alto = DataBase.update_height(10.0,"teste")
+
+    assert alto == "Height updated successfully"
+
+def test_nome_caixa():
+    nome = DataBase.update_name("caixa1","teste")
+
+    assert nome == "Name updated successfully"
+
+def test_alerta1():
+    alert1 = DataBase.update_alert_limit_1(10.0,"teste")
+
+    assert alert1 == "Alert Limit 1 updated successfully"
+
+def test_alerta2():
+    alert2 = DataBase.update_alert_limit_2(10.0,"teste")
+
+    assert alert2 == "Alert Limit 2 updated successfully"
+
+def test_alerta3():
+    alert3 = DataBase.update_alert_limit_3(10.0,"teste")
+
+    assert alert3 == "Alert Limit 3 updated successfully"
