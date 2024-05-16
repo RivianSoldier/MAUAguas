@@ -1,4 +1,4 @@
-import { Progress } from "@/components/ui/progress";
+import Image from "next/image";
 import {
     Tooltip,
     TooltipContent,
@@ -6,32 +6,32 @@ import {
     TooltipTrigger,
   } from "@/components/ui/tooltip"
 
-export function Poco({ altura, capacidade, nome }) {
+export function PocoVazao({ vazao, maximo, nome }) {
 
     var cor = "#3B3B3B";
-    var bgcor = "bg-[#3B3B3B]";
+    var bordercor = "border-b-[#3B3B3B]";
     var textcor ="text-[#3B3B3B]"
-    var volume = (altura / capacidade) * 100
+    var razao = (vazao / maximo) * 100
     var alert = ""
 
-    if (volume > 75) {
+    if (razao > 75) {
         cor = "#3B3B3B";
-        bgcor = "bg-[#89CAF9]"
+        bordercor = "border-b-[#89CAF9]"
         textcor = "text-[#89CAF9]"
         alert =""
-    } else if (volume > 50) {
+    } else if (razao > 50) {
         cor = "#89CAF9"
-        bgcor = "bg-[#89CAF9]"
+        bordercor = "border-b-[#89CAF9]"
         textcor = "text-[#89CAF9]"
         alert = "Limite 1 - menos grave"
-    } else if (volume > 25) {
+    } else if (razao > 25) {
         cor = "#DAE466"
-        bgcor = "bg-[#DAE466]"
+        bordercor = "border-b-[#DAE466]"
         textcor = "text-[#DAE466]"
         alert = "Limite 2 - grave"
     } else {
         cor = "#F989B2"
-        bgcor = "bg-[#F989B2]"
+        bordercor = "border-b-[#F989B2]"
         textcor = "text-[#F989B2]"
         alert = "Limite 3 - mais grave"
     }
@@ -54,7 +54,7 @@ export function Poco({ altura, capacidade, nome }) {
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <div className={`min-w-6 z-20 ${volume > 75 ? "hidden" : ""}`}>
+                            <div className={`min-w-6 z-20 ${razao > 75 ? "hidden" : ""}`}>
                                 <svg                                        
                                     width="25px"
                                     height="25px"
@@ -86,16 +86,21 @@ export function Poco({ altura, capacidade, nome }) {
                 </TooltipProvider>
             </div>
             <div className="absolute inset-0 flex flex-col justify-center items-center pt-10">
-                <div className="relative flex flex-col items-center">
+                <div className="relative flex flex-col items-center w-full">
                     <div className="absolute z-20 bottom-5">
-                        <p className="text-lg font-extrabold">{`${altura}`}
-                            <span className="text-base font-normal">{` / ${capacidade} m`}</span>
+                        <p className="text-lg font-extrabold text-center">{`${vazao}`}
+                            <span className="text-base font-normal">{` / ${maximo} m`}</span>
                         </p>
                     </div>
-                    <div className="absolute border-[3px] rounded-lg w-[196px] h-[40px] z-20" />
-                    <div className="absolute border-[3px] rounded-lg w-[196px] h-[56px] z-10" />
-                    <Progress height="h-[400px]" value={altura && capacidade ? (altura / capacidade) * 100 : 0} 
-                    color={bgcor} className="w-[196px] z-0" />
+                    <div className="min-w-[80px] min-h-[80px] pr-14 -mb-2">
+                        <Image src="/faucet.svg" alt="Faucet" width={80} height={80} />
+                    </div>
+                    <div className={`w-0 h-0 border-[350px] border-transparent ${bordercor} border-t-0 -mt-1`}
+                    style={{
+                        borderLeftWidth: `${razao}px`,
+                        borderRightWidth: `${razao}px`,
+                    }}/>
+                    <div className="w-4/5 rounded-xl border-solid border-white border-2"/>
                 </div>
             </div>
         </div>

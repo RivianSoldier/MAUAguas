@@ -6,7 +6,7 @@ import {
     TooltipTrigger,
   } from "@/components/ui/tooltip"
 
-export function Caixa({ altura, nome, capacidade }) {
+export function CaixaNivel({ altura, nome, capacidade }) {
 
     var cor = "#3B3B3B";
     var bgcor = "bg-[#3B3B3B]";
