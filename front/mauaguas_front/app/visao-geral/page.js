@@ -1,11 +1,12 @@
 "use client";
-
 import NavBar from '@/components/NavBar';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator"
 import { CheckboxList } from "@/components/ui/checkbox-list"
+import { Poco } from "@/components/ui/poco";
+import { Caixa } from "@/components/ui/caixa-volume";
 
 import * as React from "react";
 import {
@@ -46,8 +47,21 @@ export default function VisaoGeral() {
                         </TabsList>
                     </div>
                 </div>
-                <div className='text-white mx-10'>
-                    <TabsContent value="nivel">Dashboard de Nível</TabsContent>
+                <div className='text-white mx-10 my-4'>
+                    <TabsContent value="nivel">
+                        <div className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+                            <Poco altura={1500} capacidade={2500} />
+                            <Caixa altura={1000} capacidade={1500} nome={"Caixa 1"}></Caixa>
+                            <Caixa altura={500} capacidade={1500} nome={"Caixa 2"}></Caixa>
+                            <Caixa altura={500} capacidade={1500} nome={"Caixa 3"}></Caixa>
+                            <Caixa altura={300} capacidade={1500} nome={"Caixa 4"}></Caixa>
+                            <Caixa altura={500} capacidade={1500} nome={"Caixa 5"}></Caixa>
+                            <Caixa altura={500} capacidade={1500} nome={"Caixa 6"}></Caixa>
+                            <Caixa altura={500} capacidade={1500} nome={"Caixa 7"}></Caixa>
+                            <Caixa altura={500} capacidade={1500} nome={"Caixa 8"}></Caixa>
+                            <Caixa altura={100} capacidade={1500} nome={"Caixa 9"}></Caixa>
+                        </div>
+                    </TabsContent>
                     <TabsContent value="vazao">Dashboard de Vazão.</TabsContent>
                 </div>
             </Tabs>
