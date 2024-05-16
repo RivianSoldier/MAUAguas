@@ -1,50 +1,70 @@
 from back.api.database import DataBase
-from back.api.records import RecordsDB
-from back.api.models import ReservoirParameters, ReservoirStatus
-from datetime import datetime
-# Criar um objeto ReservoirParameters com os valores desejados
-params = ReservoirParameters(
-    id="teste",
-    height=10.5,
-    name="teste_water_tank",
-    well=False,
-    alert_limit_1=20.0,
-    alert_limit_2=30.0,
-    alert_limit_3=40.0
-)
-params_2 = ReservoirParameters(
-    id="teste2",
-    height=10.5,
-    name="teste_water_tank",
-    well=False,
-    alert_limit_1=20.0,
-    alert_limit_2=30.0,
-    alert_limit_3=40.0
-)
-status = ReservoirStatus(
-    id="teste",
-    water_height=223.0,
-    water_flow_in=100.0,
-    water_flow_out=50.0,
-    water_humidity=70.0,
-    water_voltage=12.0,
-    time_stamp=datetime.now(),
-    bomb_hours=10.0
-)
+import json
+from back.api.models import ReservoirParameters
+import datetime
 
-# Chamar o método post_reservoir_parameters e passar o objeto params como argumento
-RecordsDB.post_reservoir_parameters(params)
-RecordsDB.post_reservoir_parameters(params_2)
-RecordsDB.post_reservoir_status(status)
+def test_get():
+    dados_test = DataBase.get_reservoir_by_id("teste")
 
-RecordsDB.update_height(7,"teste")
-RecordsDB.update_records_limit_1(60,"teste")
-RecordsDB.update_records_limit_2(70,"teste")
-RecordsDB.update_records_limit_3(80,"teste")
-RecordsDB.update_name("Caixa do Daniel","teste")
-print(RecordsDB.get_reservoir_by_id("teste"))
+    assert dados_test["id"] == "teste"
 
-print(RecordsDB.get_reservoir_status_by_id("teste"))
-print(RecordsDB.get_lastest_reservoir_status_by_id("teste"))
+def test_post():
+    json_teste = {
+        "id": "testando",
+    "water_height": 10.0,
+    "water_flow_in": 12.0,
+    "water_flow_out": 9.6,
+    "water_humidity": 1.0,
+    "water_voltage": 12.0,
+    "time_stamp": "2024-05-15 21:40:41.025032670",
+    "bomb_hours": 50.0
+    }
 
-print(RecordsDB.get_lastest_reservoir_status_by_id("teste"))
+    mensagem = DataBase.post_reservoir_status(json_teste)
+
+    assert mensagem == "Reservoir status posted successfully."
+
+def test_id_existe():
+    existe = DataBase.id_exists("teste")
+
+    assert existe == True
+
+def test_status_caixa():
+    status = DataBase.get_reservoir_status_by_id("teste")
+
+    assert status["id"] == "teste"
+
+def test_lastest_reservoir():
+    result = DataBase.get_lastest_reservoir_status_by_id("teste")
+
+    assert result["id"] == "teste"
+
+def test_id_caixa():
+    caixa = DataBase.id_exists("teste")
+
+    assert caixa == True
+
+def test_high_caixa():
+    alto = DataBase.update_height(10.0,"teste")
+
+    assert alto == "Height updated successfully"
+
+def test_nome_caixa():
+    nome = DataBase.update_name("caixa1","teste")
+
+    assert nome == "Name updated successfully"
+
+def test_alerta1():
+    alert1 = DataBase.update_alert_limit_1(10.0,"teste")
+
+    assert alert1 == "Alert Limit 1 updated successfully"
+
+def test_alerta2():
+    alert2 = DataBase.update_alert_limit_2(10.0,"teste")
+
+    assert alert2 == "Alert Limit 2 updated successfully"
+
+def test_alerta3():
+    alert3 = DataBase.update_alert_limit_3(10.0,"teste")
+
+    assert alert3 == "Alert Limit 3 updated successfully"

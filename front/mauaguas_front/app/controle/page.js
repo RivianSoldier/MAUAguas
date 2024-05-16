@@ -30,7 +30,7 @@ export default function DashboardDetalhado() {
           <LimtCard title="Limite 3 - mais grave" color="#F989B2"></LimtCard>
         </div>
         <div className="grid grid-cols-6 justify-between mx-10 mt-10 items-center gap-4">
-          <div className="flex gap-4 lg:col-span-2 md:col-span-3 col-span-4 col-start-2 w-full">
+          <div className="flex gap-4 lg:col-span-2 md:col-span-3 col-span-6 col-start-1 w-full">
             <div className="relative w-full">
               <Input
                 placeholder="Procurar..."
@@ -75,7 +75,7 @@ export default function DashboardDetalhado() {
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-          <div className="lg:col-start-5 lg:col-span-2 md:col-span-2 md:col-start-5 col-span-4 col-start-2 ">
+          <div className="lg:col-start-5 lg:col-span-2 md:col-span-2 md:col-start-5 col-span-6 col-start-1 ">
             <Button className="w-full h-14 bg-[#3270B8] hover:bg-[#2D64A5] hover:bg-opacity-50">
               Salvar alterações
             </Button>

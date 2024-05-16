@@ -1,12 +1,12 @@
 {
     "teste": {
         "id": "teste",
-        "name": "Caixa do Daniel",
+        "name": "caixa1",
         "well": false,
-        "height": 7,
-        "alert_limit_1": 60,
-        "alert_limit_2": 70,
-        "alert_limit_3": 80
+        "height": 10.0,
+        "alert_limit_1": 10.0,
+        "alert_limit_2": 10.0,
+        "alert_limit_3": 10.0
     },
     "teste2": {
         "id": "teste2",
