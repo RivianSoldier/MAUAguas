@@ -65,6 +65,11 @@ class RecordsDB:
         return reservoir
     
     @staticmethod
+    def get_reservoirs_ids():
+        ids = DataBase.get_reservoirs_ids()
+        return ids
+    
+    @staticmethod
     def get_reservoir_status_by_date(id:str, start_date: datetime, end_date:datetime):
         status = DataBase.get_reservoir_status_by_date(id,start_date,end_date)
         return status

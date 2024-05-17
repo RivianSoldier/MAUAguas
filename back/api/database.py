@@ -184,3 +184,16 @@ class DataBase:
         except FileNotFoundError:
             return False
         return data
+    
+    
+    @staticmethod
+    def get_reservoirs_ids():
+        try:
+            with open('reservoir.json', 'r') as json_file:
+                data = json.load(json_file)
+        except FileNotFoundError:
+            return False
+        ids = []
+        for key, reservoir in data.items():
+            ids.append(reservoir['id']) 
+        return ids

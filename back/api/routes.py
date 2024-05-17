@@ -3,6 +3,7 @@ from flask import Blueprint, make_response, jsonify, request
 from datetime import datetime
 from back.api.models import ReservoirStatus, ReservoirParameters
 from simulator import Simulador
+from back.api.alerts import Alerts
 
 bp = Blueprint('rotas', __name__)
 
@@ -15,6 +16,13 @@ def get_reservoirs():
     reservoirs = RecordsDB.get_reservoirs()
     return make_response(
         jsonify(reservoirs)
+    )
+
+@bp.route("/get/reservoirs_ids",methods=['GET'])
+def get_reservoirs_ids():
+    reservoirs_ids = RecordsDB.get_reservoirs_ids()
+    return make_response(
+        jsonify(reservoirs_ids)
     )
     
 @bp.route("/get/reservoir_by_id/<string:id>", methods=['GET'])
@@ -106,3 +114,13 @@ def start_simulator(id:str):
         print(response)
         return response
     return "ID not exists on the database"
+
+@bp.route("/alert_2/<string:id>/<string:limit_2>")
+def alert_2(id:str, limit_2:str):
+    response = Alerts.alert2(id,limit_2)
+    return response
+
+@bp.route("/alert_3/<string:id>/<string:limit_3>")
+def alert_3(id:str,limit_3:str):
+    response = Alerts.alert3(id,limit_3)
+    return response
