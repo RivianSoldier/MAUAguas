@@ -46,7 +46,7 @@ export function ModeloVazao({ vazao, maximo, nome, tipo }) {
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <div className="z-20 max-w-40 max-h-40">
+                            <div className="z-20 w-4/5 max-h-40">
                                 <p class="line-clamp-1 font-semibold text-lg">{nome}</p>
                             </div>
                         </TooltipTrigger>
@@ -93,7 +93,7 @@ export function ModeloVazao({ vazao, maximo, nome, tipo }) {
                 <div className="relative flex flex-col items-center w-full">
                     <div className="absolute z-20 bottom-5">
                         <p className="text-lg font-extrabold text-center">{`${vazao}`}
-                            <span className="text-base font-normal">{` / ${maximo} m`}</span>
+                            <span className="text-base font-normal">{` / ${maximo} L`}</span>
                         </p>
                     </div>
                     <div className={`relative ${tipo == 1 ? "min-w-[90px] min-h-[90px]" : "min-w-[70px] min-h-[70px]"} z-10 w-full flex justify-center`}>
