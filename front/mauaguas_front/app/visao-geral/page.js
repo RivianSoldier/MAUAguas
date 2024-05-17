@@ -5,8 +5,8 @@ import { Button } from '@/components/ui/button';
 import Image from "next/image";
 import { Separator } from "@/components/ui/separator"
 import { CheckboxList } from "@/components/ui/checkbox-list"
-import { Poco } from "@/components/ui/poco";
-import { Caixa } from "@/components/ui/caixa-volume";
+import { ModeloVazao } from '@/components/ui/modelo-vazao-geral';
+import { ModeloNivel } from '@/components/ui/modelo-nivel-geral';
 
 import * as React from "react";
 import {
@@ -33,12 +33,12 @@ export default function VisaoGeral() {
                             </DropdownMenuTrigger>
                             <DropdownMenuContent className="w-56 text-white bg-[#3B3B3B] border-none">
                                 <p className='m-2 font-bold'>Filtrar por</p>
-                                <Separator className='bg-[#616161]'/>
+                                <Separator className='bg-[#616161]' />
                                 <DropdownMenuLabel>Tipo</DropdownMenuLabel>
-                                    <CheckboxList type={"tipo"} names={["Selecionar Tudo", "Caixas D'água", "Poço"]} />
-                                <Separator className='bg-[#616161]'/>
+                                <CheckboxList type={"tipo"} names={["Selecionar Tudo", "Caixas D'água", "Poço"]} />
+                                <Separator className='bg-[#616161]' />
                                 <DropdownMenuLabel>Limite</DropdownMenuLabel>
-                                    <CheckboxList type={"limite"} names={["Selecionar Tudo", "Padrão", "Menos Grave", "Grave", "Mais Grave"]} />
+                                <CheckboxList type={"limite"} names={["Selecionar Tudo", "Padrão", "Menos Grave", "Grave", "Mais Grave"]} />
                             </DropdownMenuContent>
                         </DropdownMenu>
                         <TabsList className='bg-[#3B3B3B] rounded-xl px-0 py-6'>
@@ -50,19 +50,33 @@ export default function VisaoGeral() {
                 <div className='text-white mx-10 my-4'>
                     <TabsContent value="nivel">
                         <div className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
-                            <Poco altura={1500} capacidade={2500} nome={"Poço"}/>
-                            <Caixa altura={1000} capacidade={1500} nome={"Caixa 1"}></Caixa>
-                            <Caixa altura={500} capacidade={1500} nome={"Caixa 2"}></Caixa>
-                            <Caixa altura={1500} capacidade={1500} nome={"Caixa 3"}></Caixa>
-                            <Caixa altura={300} capacidade={1500} nome={"Caixa 4"}></Caixa>
-                            <Caixa altura={500} capacidade={1500} nome={"Caixa 5"}></Caixa>
-                            <Caixa altura={500} capacidade={1500} nome={"Caixa 6"}></Caixa>
-                            <Caixa altura={500} capacidade={1500} nome={"Caixa 7"}></Caixa>
-                            <Caixa altura={500} capacidade={1500} nome={"Caixa 8"}></Caixa>
-                            <Caixa altura={100} capacidade={1500} nome={"Caixa 9"}></Caixa>
+                            <ModeloNivel altura={1500} capacidade={2500} nome={"Poço"} tipo={1} />
+                            <ModeloNivel altura={1000} capacidade={1500} nome={"Caixa 1"} tipo={2} />
+                            <ModeloNivel altura={500} capacidade={1500} nome={"Caixa 2"} tipo={2} />
+                            <ModeloNivel altura={1500} capacidade={1500} nome={"Caixa 3"} tipo={2} />
+                            <ModeloNivel altura={300} capacidade={1500} nome={"Caixa 4"} tipo={2} />
+                            <ModeloNivel altura={500} capacidade={1500} nome={"Caixa 5"} tipo={2} />
+                            <ModeloNivel altura={500} capacidade={1500} nome={"Caixa 6"} tipo={2} />
+                            <ModeloNivel altura={500} capacidade={1500} nome={"Caixa 7"} tipo={2} />
+                            <ModeloNivel altura={500} capacidade={1500} nome={"Caixa 8"} tipo={2} />
+                            <ModeloNivel altura={100} capacidade={1500} nome={"Caixa 9"} tipo={2} />
                         </div>
                     </TabsContent>
-                    <TabsContent value="vazao">Dashboard de Vazão.</TabsContent>
+                    <TabsContent value="vazao">
+                        <div className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
+                            <ModeloVazao nome="Poço" vazao={1000} maximo={1500} tipo={1} />
+                            <ModeloVazao nome="Caixa 1" vazao={1500} maximo={1500} tipo={2} />
+                            <ModeloVazao nome="Caixa2aaaaaaaaaaaaaaaaaaaaaaaaaaaa" vazao={1000} maximo={1500} tipo={2} />
+                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2} />
+                            <ModeloVazao nome="Caixa 4" vazao={300} maximo={1500} tipo={2} />
+                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2} />
+                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2} />
+                            <ModeloVazao nome="Caixa 3eeeeeeeeeeeeeeeeee" vazao={500} maximo={1500} tipo={2} />
+                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2} />
+                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2} />
+                            <ModeloVazao nome="Caixa 5" vazao={0} maximo={1500} tipo={2} />
+                        </div>
+                    </TabsContent>
                 </div>
             </Tabs>
         </main>

@@ -1,61 +1,65 @@
-import { Progress } from "@/components/ui/progress";
+import Image from "next/image";
 import {
     Tooltip,
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-  } from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip"
 
-export function Poco({ altura, capacidade, nome }) {
+export function ModeloVazao({ vazao, maximo, nome, tipo }) {
+    const alturaPoco = "h-[515px]";
+    const alturaCaixa = "h-[250px]";
+    const bordaPoco = "border-[380px]";
+    const bordaCaixa = "border-[100px]"
 
     var cor = "#3B3B3B";
-    var bgcor = "bg-[#3B3B3B]";
-    var textcor ="text-[#3B3B3B]"
-    var volume = (altura / capacidade) * 100
+    var bordercor = "border-b-[#3B3B3B]";
+    var textcor = "text-[#3B3B3B]"
+    var razao = (vazao / maximo) * 100
     var alert = ""
 
-    if (volume > 75) {
+    if (razao > 75) {
         cor = "#3B3B3B";
-        bgcor = "bg-[#89CAF9]"
+        bordercor = "border-b-[#89CAF9]"
         textcor = "text-[#89CAF9]"
-        alert =""
-    } else if (volume > 50) {
+        alert = ""
+    } else if (razao > 50) {
         cor = "#89CAF9"
-        bgcor = "bg-[#89CAF9]"
+        bordercor = "border-b-[#89CAF9]"
         textcor = "text-[#89CAF9]"
         alert = "Limite 1 - menos grave"
-    } else if (volume > 25) {
+    } else if (razao > 25) {
         cor = "#DAE466"
-        bgcor = "bg-[#DAE466]"
+        bordercor = "border-b-[#DAE466]"
         textcor = "text-[#DAE466]"
         alert = "Limite 2 - grave"
     } else {
         cor = "#F989B2"
-        bgcor = "bg-[#F989B2]"
+        bordercor = "border-b-[#F989B2]"
         textcor = "text-[#F989B2]"
         alert = "Limite 3 - mais grave"
     }
 
     return (
-        <div className="relative h-[515px] w-full min-w-[192px] bg-[#3B3B3B] rounded-lg row-span-2 col-span-1 drop-shadow-lg z-30">
-            <div className="flex justify-between items-center py-6 px-9">
+        <div className={`relative ${tipo == 1 ? alturaPoco : alturaCaixa} w-full min-w-[192px] bg-[#3B3B3B] rounded-lg ${tipo == 1 ? "row-span-2" : "row-span-1"} col-span-1 drop-shadow-lg`}>
+            <div className="flex justify-between items-center pt-6 px-9 z-40">
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <div className="z-20">
-                                <p className="font-semibold text-lg line-clamp-1">{nome}</p>
+                            <div className="z-20 w-4/5 max-h-40">
+                                <p class="line-clamp-1 font-semibold text-lg">{nome}</p>
                             </div>
                         </TooltipTrigger>
                         <TooltipContent>
-                            <p className="text-lg z-20 text-white">{nome}</p>
+                            <p className="text-lg text-white">{nome}</p>
                         </TooltipContent>
                     </Tooltip>
                 </TooltipProvider>
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <div className={`min-w-6 z-20 ${volume > 75 ? "hidden" : ""}`}>
-                                <svg                                        
+                            <div className={`min-w-6 z-20 ${razao > 75 ? "hidden" : ""}`}>
+                                <svg
                                     width="25px"
                                     height="25px"
                                     viewBox="0 0 20 20"
@@ -85,17 +89,23 @@ export function Poco({ altura, capacidade, nome }) {
                     </Tooltip>
                 </TooltipProvider>
             </div>
-            <div className="absolute inset-0 flex flex-col justify-center items-center pt-10">
-                <div className="relative flex flex-col items-center">
+            <div className="absolute inset-0 flex flex-col justify-center items-center pt-6">
+                <div className="relative flex flex-col items-center w-full">
                     <div className="absolute z-20 bottom-5">
-                        <p className="text-lg font-extrabold">{`${altura}`}
-                            <span className="text-base font-normal">{` / ${capacidade} m`}</span>
+                        <p className="text-lg font-extrabold text-center">{`${vazao}`}
+                            <span className="text-base font-normal">{` / ${maximo} L`}</span>
                         </p>
                     </div>
-                    <div className="absolute border-[3px] rounded-lg w-[196px] h-[40px] z-20" />
-                    <div className="absolute border-[3px] rounded-lg w-[196px] h-[56px] z-10" />
-                    <Progress height="h-[400px]" value={altura && capacidade ? (altura / capacidade) * 100 : 0} 
-                    color={bgcor} className="w-[196px] z-0" />
+                    <div className={`relative ${tipo == 1 ? "min-w-[90px] min-h-[90px]" : "min-w-[70px] min-h-[70px]"} z-10 w-full flex justify-center`}>
+                        <div className={`absolute ${tipo == 1 ? "h-[79px] w-[90px]" : "h-[61px] w-[70px]"} bg-[#3B3B3B] z-10`} />
+                        <Image src="/faucet.svg" alt="Faucet" width={tipo == 1 ? 90 : 70} height={tipo == 1 ? 90 : 70} className={`absolute z-10 ${tipo == 1 ? "mr-[62px]" : "mr-[49px]"}`} />
+                    </div>
+                    <div className={`w-0 h-0 ${tipo == 1 ? bordaPoco : bordaCaixa} border-transparent ${bordercor} border-t-0 ${tipo == 1 ? "-mt-12" : "-mt-4"}`}
+                        style={{
+                            borderLeftWidth: `${razao * 0.9}px`,
+                            borderRightWidth: `${razao * 0.9}px`,
+                        }} />
+                    <div className="w-4/5 rounded-xl border-solid border-white border-2" />
                 </div>
             </div>
         </div>
