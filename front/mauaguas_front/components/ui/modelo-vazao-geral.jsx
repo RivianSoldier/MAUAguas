@@ -4,13 +4,17 @@ import {
     TooltipContent,
     TooltipProvider,
     TooltipTrigger,
-  } from "@/components/ui/tooltip"
+} from "@/components/ui/tooltip"
 
-export function PocoVazao({ vazao, maximo, nome }) {
+export function ModeloVazao({ vazao, maximo, nome, tipo }) {
+    const alturaPoco = "h-[515px]";
+    const alturaCaixa = "h-[250px]";
+    const bordaPoco = "border-[380px]";
+    const bordaCaixa = "border-[100px]"
 
     var cor = "#3B3B3B";
     var bordercor = "border-b-[#3B3B3B]";
-    var textcor ="text-[#3B3B3B]"
+    var textcor = "text-[#3B3B3B]"
     var razao = (vazao / maximo) * 100
     var alert = ""
 
@@ -18,7 +22,7 @@ export function PocoVazao({ vazao, maximo, nome }) {
         cor = "#3B3B3B";
         bordercor = "border-b-[#89CAF9]"
         textcor = "text-[#89CAF9]"
-        alert =""
+        alert = ""
     } else if (razao > 50) {
         cor = "#89CAF9"
         bordercor = "border-b-[#89CAF9]"
@@ -37,17 +41,17 @@ export function PocoVazao({ vazao, maximo, nome }) {
     }
 
     return (
-        <div className="relative h-[515px] w-full min-w-[192px] bg-[#3B3B3B] rounded-lg row-span-2 col-span-1 drop-shadow-lg z-30">
-            <div className="flex justify-between items-center py-6 px-9">
+        <div className={`relative ${tipo == 1 ? alturaPoco : alturaCaixa} w-full min-w-[192px] bg-[#3B3B3B] rounded-lg ${tipo == 1 ? "row-span-2" : "row-span-1"} col-span-1 drop-shadow-lg`}>
+            <div className="flex justify-between items-center pt-6 px-9 z-40">
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <div className="z-20">
-                                <p className="font-semibold text-lg line-clamp-1">{nome}</p>
+                            <div className="z-20 max-w-40 max-h-40">
+                                <p class="line-clamp-1 font-semibold text-lg">{nome}</p>
                             </div>
                         </TooltipTrigger>
                         <TooltipContent>
-                            <p className="text-lg z-20 text-white">{nome}</p>
+                            <p className="text-lg text-white">{nome}</p>
                         </TooltipContent>
                     </Tooltip>
                 </TooltipProvider>
@@ -55,7 +59,7 @@ export function PocoVazao({ vazao, maximo, nome }) {
                     <Tooltip>
                         <TooltipTrigger asChild>
                             <div className={`min-w-6 z-20 ${razao > 75 ? "hidden" : ""}`}>
-                                <svg                                        
+                                <svg
                                     width="25px"
                                     height="25px"
                                     viewBox="0 0 20 20"
@@ -85,22 +89,23 @@ export function PocoVazao({ vazao, maximo, nome }) {
                     </Tooltip>
                 </TooltipProvider>
             </div>
-            <div className="absolute inset-0 flex flex-col justify-center items-center pt-10">
+            <div className="absolute inset-0 flex flex-col justify-center items-center pt-6">
                 <div className="relative flex flex-col items-center w-full">
                     <div className="absolute z-20 bottom-5">
                         <p className="text-lg font-extrabold text-center">{`${vazao}`}
                             <span className="text-base font-normal">{` / ${maximo} m`}</span>
                         </p>
                     </div>
-                    <div className="min-w-[80px] min-h-[80px] pr-14 -mb-2">
-                        <Image src="/faucet.svg" alt="Faucet" width={80} height={80} />
+                    <div className={`relative ${tipo == 1 ? "min-w-[90px] min-h-[90px]" : "min-w-[70px] min-h-[70px]"} z-10 w-full flex justify-center`}>
+                        <div className={`absolute ${tipo == 1 ? "h-[79px] w-[90px]" : "h-[61px] w-[70px]"} bg-[#3B3B3B] z-10`} />
+                        <Image src="/faucet.svg" alt="Faucet" width={tipo == 1 ? 90 : 70} height={tipo == 1 ? 90 : 70} className={`absolute z-10 ${tipo == 1 ? "mr-[62px]" : "mr-[49px]"}`} />
                     </div>
-                    <div className={`w-0 h-0 border-[350px] border-transparent ${bordercor} border-t-0 -mt-1`}
-                    style={{
-                        borderLeftWidth: `${razao}px`,
-                        borderRightWidth: `${razao}px`,
-                    }}/>
-                    <div className="w-4/5 rounded-xl border-solid border-white border-2"/>
+                    <div className={`w-0 h-0 ${tipo == 1 ? bordaPoco : bordaCaixa} border-transparent ${bordercor} border-t-0 ${tipo == 1 ? "-mt-12" : "-mt-4"}`}
+                        style={{
+                            borderLeftWidth: `${razao * 0.9}px`,
+                            borderRightWidth: `${razao * 0.9}px`,
+                        }} />
+                    <div className="w-4/5 rounded-xl border-solid border-white border-2" />
                 </div>
             </div>
         </div>

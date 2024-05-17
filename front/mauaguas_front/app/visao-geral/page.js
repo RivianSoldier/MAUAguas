@@ -6,7 +6,6 @@ import Image from "next/image";
 import { Separator } from "@/components/ui/separator"
 import { CheckboxList } from "@/components/ui/checkbox-list"
 import { PocoNivel } from "@/components/ui/poco-nivel";
-import { PocoVazao } from "@/components/ui/poco-vazao";
 import { CaixaNivel } from "@/components/ui/caixa-nivel";
 
 import * as React from "react";
@@ -16,6 +15,7 @@ import {
     DropdownMenuLabel,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { ModeloVazao } from '@/components/ui/modelo-vazao-geral';
 
 export default function VisaoGeral() {
 
@@ -65,7 +65,17 @@ export default function VisaoGeral() {
                     </TabsContent>
                     <TabsContent value="vazao">
                     <div className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
-                        <PocoVazao nome="Poço" vazao={1000} maximo={1500}></PocoVazao>
+                        <ModeloVazao nome="Poço" vazao={1000} maximo={1500} tipo={1}></ModeloVazao>
+                        <ModeloVazao nome="Caixa 1" vazao={1500} maximo={1500} tipo={2}></ModeloVazao>
+                        <ModeloVazao nome="Caixa2aaaaaaaaaaaaaaaaaaaaaaaaaaaa" vazao={1000} maximo={1500} tipo={2}></ModeloVazao>
+                        <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2}></ModeloVazao>
+                        <ModeloVazao nome="Caixa 4" vazao={300} maximo={1500} tipo={2}></ModeloVazao>
+                        <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2}></ModeloVazao>
+                        <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2}></ModeloVazao>
+                        <ModeloVazao nome="Caixa 3eeeeeeeeeeeeeeeeee" vazao={500} maximo={1500} tipo={2}></ModeloVazao>
+                        <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2}></ModeloVazao>
+                        <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2}></ModeloVazao>
+                        <ModeloVazao nome="Caixa 5" vazao={0} maximo={1500} tipo={2}></ModeloVazao>
                     </div>
                     </TabsContent>
                 </div>

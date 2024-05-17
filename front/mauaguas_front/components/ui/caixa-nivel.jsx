@@ -42,7 +42,7 @@ export function CaixaNivel({ altura, nome, capacidade }) {
                     <TooltipProvider>
                         <Tooltip>
                             <TooltipTrigger asChild>
-                                <div className="z-20">
+                                <div className="z-20 max-w-40">
                                     <p className="font-semibold text-lg line-clamp-1">{`${nome}`}</p>
                                 </div>
                             </TooltipTrigger>
