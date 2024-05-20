@@ -1,0 +1,22 @@
+{
+    "Ticket Caixa D'\u00c1guaLivia": {
+        "id": "Livia",
+        "alert": "45",
+        "message": "Caixa D'\u00c1gua Livia est\u00e1 abaixo do limite 2 45"
+    },
+    "Ticket Caixa D'AguaRaul": {
+        "id": "Raul",
+        "alert": "45",
+        "message": "Caixa D'\u00c1gua Raul est\u00e1 abaixo do limite 2 45"
+    },
+    "Ticket Caixa D'Agua Eduardo": {
+        "id": "Eduardo",
+        "alert": "45",
+        "message": "Caixa D'\u00c1gua Eduardo est\u00e1 abaixo do limite 2 45"
+    },
+    "Ticket Caixa D'Agua eduardo": {
+        "id": "eduardo",
+        "alert": "35",
+        "message": "Caixa D'\u00c1gua eduardo est\u00e1 abaixo do limite 2 35"
+    }
+}
