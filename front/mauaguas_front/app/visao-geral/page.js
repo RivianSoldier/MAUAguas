@@ -65,16 +65,16 @@ export default function VisaoGeral() {
                     <TabsContent value="vazao">
                         <div className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
                             <ModeloVazao nome="Poço" vazao={1000} maximo={1500} tipo={1} />
-                            <ModeloVazao nome="Caixa 1" vazao={1500} maximo={1500} tipo={2} />
-                            <ModeloVazao nome="Caixa2aaaaaaaaaaaaaaaaaaaaaaaaaaaa" vazao={1000} maximo={1500} tipo={2} />
-                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2} />
-                            <ModeloVazao nome="Caixa 4" vazao={300} maximo={1500} tipo={2} />
-                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2} />
-                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2} />
-                            <ModeloVazao nome="Caixa 3eeeeeeeeeeeeeeeeee" vazao={500} maximo={1500} tipo={2} />
-                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2} />
-                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} tipo={2} />
-                            <ModeloVazao nome="Caixa 5" vazao={0} maximo={1500} tipo={2} />
+                            <ModeloVazao nome="Caixa 1" vazao={1500} maximo={1500}/>
+                            <ModeloVazao nome="Caixa2aaaaaaaaaaaaaaaaaaaaaaaaaaaa" vazao={1000} maximo={1500}/>
+                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500}/>
+                            <ModeloVazao nome="Caixa 4" vazao={300} maximo={1500}/>
+                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500}/>
+                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500}/>
+                            <ModeloVazao nome="Caixa 3eeeeeeeeeeeeeeeeee" vazao={500} maximo={1500}/>
+                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500}/>
+                            <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500}/>
+                            <ModeloVazao nome="Caixa 5" vazao={0} maximo={1500}/>
                         </div>
                     </TabsContent>
                 </div>

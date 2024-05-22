@@ -12,7 +12,7 @@ export default function DashboardDetalhado() {
     <main className="flex min-h-screen flex-col bg-[#303030]">
       <NavBar activePage="dashboard-detalhado" />
       <div className="flex flex-grow">
-        <div className="flex flex-col items-center justify-start pt-32 w-96 bg-[#3b3b3b] gap-4 px-4">
+        <div className="flex flex-col items-center justify-start pt-28 w-96 bg-[#3b3b3b] gap-4 px-4">
           <div className="relative">
             <Input
               placeholder="Procurar..."
@@ -35,25 +35,24 @@ export default function DashboardDetalhado() {
           </div>
         </div>
         <div className="flex flex-col w-full text-white mx-4">
-          <p className="mt-32">
+          <p className="mt-28">
             Dashboard em detalhes da
             <span className="font-bold"> Caixa D'água 4</span>
           </p>
-          <div className="flex items-center justify-center bg-[#3b3b3b] rounded-lg h-14 font-semibold mt-8">
+          <div className="flex items-center justify-center bg-[#3b3b3b] rounded-lg h-14 font-semibold mt-4">
             19:46 OS DADOS FORAM ATUALIZADOS !
           </div>
           <div className="grid grid-cols-4 gap-3 mt-3">
             <div className="grid grid-cols-2 gap-3 col-span-4 min-[1190px]:col-span-1">
               <div className="col-span-1 min-[1190px]:col-span-2">
                 <ModeloNivel
-                  nome={"Nível"}
                   altura={50}
                   capacidade={100}
-                  tipo={0}
+                  hidden={true}
                 />
               </div>
               <div className="col-span-1 min-[1190px]:col-span-2">
-                <ModeloVazao nome={"Vazão"} vazao={50} maximo={100} tipo={0} />
+                <ModeloVazao vazao={50} maximo={100} hidden={true} />
               </div>
             </div>
 

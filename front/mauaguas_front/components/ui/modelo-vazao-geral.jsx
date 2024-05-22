@@ -6,7 +6,7 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-export function ModeloVazao({ vazao, maximo, nome, tipo }) {
+export function ModeloVazao({ vazao = 0, maximo = 0, nome = "Vazão", tipo = 0, hidden = false}) {
     const alturaPoco = "h-[515px]";
     const alturaCaixa = "h-[250px]";
     const bordaPoco = "border-[380px]";
@@ -58,7 +58,7 @@ export function ModeloVazao({ vazao, maximo, nome, tipo }) {
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <div className={`min-w-6 z-20 ${razao > 75 ? "hidden" : ""}`}>
+                            <div className={`min-w-6 z-20 ${((razao > 75) || (hidden == true)) ? "hidden" : ""}`}>
                                 <svg
                                     width="25px"
                                     height="25px"
