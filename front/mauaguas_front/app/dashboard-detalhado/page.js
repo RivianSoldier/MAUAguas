@@ -3,9 +3,8 @@
 import NavBar from "@/components/NavBar";
 import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import Chart from "@/components/ui/chart";
-import { ModeloNivel } from "@/components/ui/modelo-nivel-geral";
-import { ModeloVazao } from "@/components/ui/modelo-vazao-geral";
+import DashboardCaixa from "@/components/dashboard-caixa";
+import DashboardPoco from "@/components/dashboard-poco";
 
 export default function DashboardDetalhado() {
   return (
@@ -114,33 +113,7 @@ export default function DashboardDetalhado() {
             </div>
           </div>
         </div>
-        <div className="flex flex-col pb-4 w-full text-white mx-4 ml-[23rem]">
-          <p className="mt-28">
-            Dashboard em detalhes da
-            <span className="font-bold"> Caixa D'água 4</span>
-          </p>
-          <div className="flex items-center justify-center bg-[#3b3b3b] rounded-lg h-14 font-semibold mt-4">
-            19:46 OS DADOS FORAM ATUALIZADOS !
-          </div>
-          <div className="grid grid-cols-4 gap-3 mt-3">
-            <div className="grid grid-cols-2 gap-3 col-span-4 min-[1190px]:col-span-1">
-              <div className="col-span-1 min-[1190px]:col-span-2">
-                <ModeloNivel
-                  altura={50}
-                  capacidade={100}
-                  hidden={true}
-                />
-              </div>
-              <div className="col-span-1 min-[1190px]:col-span-2">
-                <ModeloVazao vazao={50} maximo={100} hidden={true} />
-              </div>
-            </div>
-
-            <div className="w-full col-span-4 min-[1190px]:col-span-3 flex row-span-2 items-center justify-center h-[510px]">
-              <Chart />
-            </div>
-          </div>
-        </div>
+        <DashboardPoco></DashboardPoco>
       </div>
     </main>
     </div>
