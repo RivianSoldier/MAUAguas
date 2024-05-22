@@ -54,7 +54,7 @@ export function ModeloVazao({ vazao, maximo, nome, tipo }) {
                             <p className="text-lg text-white">{nome}</p>
                         </TooltipContent>
                     </Tooltip>
-                </TooltipProvider>
+                </TooltipProvider>  
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
