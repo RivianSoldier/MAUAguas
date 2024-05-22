@@ -41,7 +41,7 @@ export function ModeloNivel({ altura, capacidade, nome, tipo }) {
     }
 
     return (
-        <div className={`relative ${tipo == 1 ? alturaPoco : alturaCaixa} w-full min-w-[192px] bg-[#3B3B3B] rounded-lg ${tipo == 1 ? "row-span-2" : "row-span-1"} col-span-1 drop-shadow-lg z-30`}>
+        <div className={`relative ${tipo == 1 ? alturaPoco : alturaCaixa} w-full min-w-[192px] bg-[#3B3B3B] rounded-lg ${tipo == 1 ? "row-span-2" : "row-span-1"} col-span-1 drop-shadow-lg z-30 text-white`}>
             <div className="flex justify-between items-center py-6 px-9">
                 <TooltipProvider>
                     <Tooltip>
