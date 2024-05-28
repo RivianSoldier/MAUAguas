@@ -136,3 +136,8 @@ class RecordsDB:
     def id_existis(id:str):
         is_id = DataBase.id_exists(id)
         return is_id     
+    
+    @staticmethod
+    def get_resorvoirs_ids():
+        ids = DataBase.get_reservoirs_ids()
+        return ids

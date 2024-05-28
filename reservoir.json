@@ -3,7 +3,7 @@
         "id": "teste",
         "name": "caixa1",
         "well": false,
-        "height": 10.0,
+        "height": 15.0,
         "alert_limit_1": 10.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 10.0
