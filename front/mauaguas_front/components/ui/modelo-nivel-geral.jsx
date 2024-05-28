@@ -6,7 +6,7 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-export function ModeloNivel({ altura, capacidade, nome, tipo }) {
+export function ModeloNivel({ altura = 0, capacidade = 0, nome = "Nível", tipo = 0, hidden = false}) {
     const alturaPoco = "h-[515px]";
     const alturaCaixa = "h-[250px]";
     const tamanhoPoco = "h-[420px]";
@@ -58,7 +58,7 @@ export function ModeloNivel({ altura, capacidade, nome, tipo }) {
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <div className={`min-w-6 z-20 ${volume > 75 ? "hidden" : ""}`}>
+                            <div className={`min-w-6 z-20 ${ ((volume > 75) || (hidden == true)) ? "hidden" : ""}`}>
                                 <svg
                                     width="25px"
                                     height="25px"
