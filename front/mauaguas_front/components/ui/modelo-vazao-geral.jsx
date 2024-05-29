@@ -12,32 +12,32 @@ export function ModeloVazao({ vazao = 0, maximo = 0, nome = "Vazão", tipo = 0, 
     const bordaPoco = "border-[380px]";
     const bordaCaixa = "border-[100px]"
 
-    var cor = "#3B3B3B";
-    var bordercor = "border-b-[#3B3B3B]";
-    var textcor = "text-[#3B3B3B]"
+    var cor = "#89CAF9";
+    var bordercor = "border-b-[#89CAF9]";
+    var textcor = "text-[#89CAF9]"
     var razao = (vazao / maximo) * 100
     var alert = ""
 
     if (razao > 75) {
-        cor = "#3B3B3B";
+        cor = "#89CAF9";
         bordercor = "border-b-[#89CAF9]"
         textcor = "text-[#89CAF9]"
-        alert = ""
+        alert = "Vazão Acima de 75%"
     } else if (razao > 50) {
         cor = "#89CAF9"
         bordercor = "border-b-[#89CAF9]"
         textcor = "text-[#89CAF9]"
-        alert = "Limite 1 - menos grave"
+        alert = "Vazão Acima de 50%"
     } else if (razao > 25) {
         cor = "#DAE466"
         bordercor = "border-b-[#DAE466]"
         textcor = "text-[#DAE466]"
-        alert = "Limite 2 - grave"
+        alert = "Vazão Acima de 25%"
     } else {
         cor = "#F989B2"
         bordercor = "border-b-[#F989B2]"
         textcor = "text-[#F989B2]"
-        alert = "Limite 3 - mais grave"
+        alert = "Vazão Abaixo de 25%"
     }
 
     return (
@@ -58,7 +58,7 @@ export function ModeloVazao({ vazao = 0, maximo = 0, nome = "Vazão", tipo = 0, 
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <div className={`min-w-6 z-20 ${((razao > 75) || (hidden == true)) ? "hidden" : ""}`}>
+                            <div className={`min-w-6 z-20 ${(hidden == true) ? "hidden" : ""}`}>
                                 <svg
                                     width="25px"
                                     height="25px"
