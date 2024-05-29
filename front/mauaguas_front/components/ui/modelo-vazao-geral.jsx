@@ -6,7 +6,7 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-export function ModeloVazao({ vazao, maximo, nome, tipo }) {
+export function ModeloVazao({ vazao = 0, maximo = 0, nome = "Vazão", tipo = 0, hidden = false}) {
     const alturaPoco = "h-[515px]";
     const alturaCaixa = "h-[250px]";
     const bordaPoco = "border-[380px]";
@@ -58,7 +58,7 @@ export function ModeloVazao({ vazao, maximo, nome, tipo }) {
                 <TooltipProvider>
                     <Tooltip>
                         <TooltipTrigger asChild>
-                            <div className={`min-w-6 z-20 ${razao > 75 ? "hidden" : ""}`}>
+                            <div className={`min-w-6 z-20 ${((razao > 75) || (hidden == true)) ? "hidden" : ""}`}>
                                 <svg
                                     width="25px"
                                     height="25px"
@@ -102,8 +102,8 @@ export function ModeloVazao({ vazao, maximo, nome, tipo }) {
                     </div>
                     <div className={`w-0 h-0 ${tipo == 1 ? bordaPoco : bordaCaixa} border-transparent ${bordercor} border-t-0 ${tipo == 1 ? "-mt-12" : "-mt-4"}`}
                         style={{
-                            borderLeftWidth: `${razao * 0.9}px`,
-                            borderRightWidth: `${razao * 0.9}px`,
+                            borderLeftWidth: razao*0.9 < 90 ? `${razao * 0.9}px` : 90,
+                            borderRightWidth: razao*0.9 < 90 ? `${razao * 0.9}px` : 90,
                         }} />
                     <div className="w-4/5 rounded-xl border-solid border-white border-2" />
                 </div>
