@@ -4,7 +4,7 @@ import { ModeloVazao } from "./ui/modelo-vazao-geral";
 
 export default function DashboardPoco() {
     return (
-        <div className="flex flex-col pb-4 w-full text-white mx-4 ml-[23rem]">
+        <div className="flex flex-col pb-4 w-full text-white mx-4 md:ml-[23rem]">
             <p className="mt-28">
                 Dashboard em detalhes da
                 <span className="font-bold text-lg"> Caixa D'água 4</span>
@@ -24,10 +24,10 @@ export default function DashboardPoco() {
                 <div className="row-span-2 col-span-4 h-[515px] xl:col-span-3 xl:row-span-2">
                     <Chart />
                 </div>
-                <div className="md:col-span-2 xl:col-span-1 col-span-4">
+                <div className="sm:col-span-2 xl:col-span-1 col-span-4">
                     <ModeloVazao vazao={100} maximo={1000} hidden={true} />
                 </div>
-                <div className="md:col-span-2 xl:col-span-1 col-span-4 bg-[#3B3B3B] rounded-lg drop-shadow-lg flex flex-col items-center justify-evenly h-[250px]">
+                <div className="sm:col-span-2 xl:col-span-1 col-span-4 bg-[#3B3B3B] rounded-lg drop-shadow-lg flex flex-col items-center justify-evenly h-[250px]">
                     <p className="text-center font-bold w-[80%]">Tempo de operação da bomba</p>
                     <div className="h-[150px] w-[150px] rounded-full border-[15px] border-white flex flex-col justify-center items-center">
                         <p className="font-bold text-2xl">12 h</p>
