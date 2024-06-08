@@ -20,6 +20,7 @@ async function getdata() {
     "https://4be2-177-73-181-130.ngrok-free.app/get/lastest_reservoir_status_by_id/teste"
   );
   const data = await res.json();
+  console.log(data)
   return data;
 }
 
