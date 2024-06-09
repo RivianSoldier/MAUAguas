@@ -20,8 +20,17 @@
     "teste_3": {
         "id": "teste_3",
         "name": "Reservoir A",
-        "well": "Well A",
+        "well": false,
         "height": 10.5,
+        "alert_limit_1": 50.0,
+        "alert_limit_2": 30.0,
+        "alert_limit_3": 10.0
+    },
+    "well_for_dudu": {
+        "id": "well_for_dudu",
+        "name": "Dudu's well",
+        "well": true,
+        "height": 1200001,
         "alert_limit_1": 50.0,
         "alert_limit_2": 30.0,
         "alert_limit_3": 10.0
