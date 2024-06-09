@@ -14,18 +14,52 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+const link = "https://9b72-2804-7f0-1d-327-e2a8-fbc8-3df8-f709.ngrok-free.app"
 
-async function getdata() {
+async function getIds() {
   const res = await fetch(
-    "https://4be2-177-73-181-130.ngrok-free.app/get/lastest_reservoir_status_by_id/teste"
+    `${link}/get/reservoirs_ids`
+  );
+  const ids = await res.json();
+  console.log(ids)
+  return ids;
+}
+
+async function getReservoir(id) {
+  const res = await fetch(
+    `${link}/get/reservoir_by_id/${id}`
   );
   const data = await res.json();
-  console.log(data)
-  return data;
+  const usefullData = [data["name"], data["height"], data["well"]];
+  console.log(usefullData)
+  return usefullData;
+}
+
+async function getReservoirsData(reservoirs_ids) {
+  const reservoirsData = await Promise.all(
+    reservoirs_ids.map(async (id) => {
+      var reservoirData = await getReservoir(id);
+      const reservoirStatus = await getReservoirStatus(id);
+      reservoirData = reservoirData.concat(reservoirStatus);
+      return reservoirData;
+    })
+  );
+  console.log(reservoirsData);
+  return reservoirsData;
+}
+async function getReservoirStatus(id) {
+  const res = await fetch(
+    `${link}/get/lastest_reservoir_status_by_id/${id}`
+  );
+  const data = await res.json();
+  const waterHeight = [data["water_height"], data["water_flow_out"]];
+  console.log(waterHeight)
+  return waterHeight;
 }
 
 export default async function VisaoGeral() {
-  const data = await getdata();
+  const ids = await getIds();
+  const reservoirsData = await getReservoirsData(ids);
 
   return (
     <main className="flex min-h-screen flex-col bg-[#303030]">
@@ -93,96 +127,37 @@ export default async function VisaoGeral() {
                 altura={1500}
                 capacidade={2500}
                 nome={"Poço"}
-                tipo={1}
+                tipo={true}
               />
-              <ModeloNivel
-                altura={1000}
-                capacidade={1500}
-                nome={"Caixa 1"}
-                tipo={2}
-              />
-              <ModeloNivel
-                altura={500}
-                capacidade={1500}
-                nome={"Caixa 2"}
-                tipo={2}
-              />
-              <ModeloNivel
-                altura={1500}
-                capacidade={1500}
-                nome={"Caixa 3"}
-                tipo={2}
-              />
-              <ModeloNivel
-                altura={300}
-                capacidade={1500}
-                nome={"Caixa 4"}
-                tipo={2}
-              />
-              <ModeloNivel
-                altura={500}
-                capacidade={1500}
-                nome={"Caixa 5"}
-                tipo={2}
-              />
-              <ModeloNivel
-                altura={500}
-                capacidade={1500}
-                nome={"Caixa 6"}
-                tipo={2}
-              />
-              <ModeloNivel
-                altura={500}
-                capacidade={1500}
-                nome={"Caixa 7"}
-                tipo={2}
-              />
-              <ModeloNivel
-                altura={500}
-                capacidade={1500}
-                nome={"Caixa 8"}
-                tipo={2}
-              />
-              <ModeloNivel
-                altura={100}
-                capacidade={1500}
-                nome={"Caixa 9"}
-                tipo={2}
-              />
+              {reservoirsData.map((reservoirData, index) => (
+                <div key={index}>
+                  <ModeloNivel
+                    altura={reservoirData[1] - Math.abs(reservoirData[3] / 100).toFixed(2)}
+                    capacidade={reservoirData[1]}
+                    nome={reservoirData[0]}
+                    tipo={reservoirData[2]}
+                  />
+                </div>
+              ))}
             </div>
           </TabsContent>
           <TabsContent value="vazao">
             <div className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
-              <ModeloVazao nome="Poço" vazao={1000} maximo={1500} tipo={1} />
-              <ModeloVazao nome="Caixa 1" vazao={1500} maximo={1500} />
-              <ModeloVazao
-                nome="Caixa2aaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-                vazao={1000}
-                maximo={1500}
-              />
-              <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} />
-              <ModeloVazao nome="Caixa 4" vazao={300} maximo={1500} />
-              <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} />
-              <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} />
-              <ModeloVazao
-                nome="Caixa 3eeeeeeeeeeeeeeeeee"
-                vazao={500}
-                maximo={1500}
-              />
-              <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} />
-              <ModeloVazao nome="Caixa 3" vazao={500} maximo={1500} />
-              <ModeloVazao nome="Caixa 5" vazao={0} maximo={1500} />
+              <ModeloVazao nome="Poço" vazao={1000} maximo={1500} tipo={true} />
+              {reservoirsData.map((reservoirData, index) => (
+                <div key={index}>
+                  <ModeloVazao
+                    vazao={reservoirData[4].toFixed(2)}
+                    maximo={60}
+                    nome={reservoirData[0]}
+                    tipo={reservoirData[2]}
+                  />
+                </div>
+              ))}
             </div>
           </TabsContent>
         </div>
       </Tabs>
-      <div>
-        {Object.entries(data).map(([key, value]) => (
-          <div key={key}>
-            {key}: {value}
-          </div>
-        ))}
-      </div>{" "}
     </main>
   );
 }

@@ -6,7 +6,7 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-export function ModeloNivel({ altura = 0, capacidade = 0, nome = "Nível", tipo = 0, hidden = false}) {
+export function ModeloNivel({ altura = 0, capacidade = 0, nome = "Nível", tipo = false, hidden = false}) {
     const alturaPoco = "h-[515px]";
     const alturaCaixa = "h-[250px]";
     const tamanhoPoco = "h-[420px]";
@@ -41,7 +41,7 @@ export function ModeloNivel({ altura = 0, capacidade = 0, nome = "Nível", tipo 
     }
 
     return (
-        <div className={`relative ${tipo == 1 ? alturaPoco : alturaCaixa} w-full min-w-[192px] bg-[#3B3B3B] rounded-lg ${tipo == 1 ? "row-span-2" : "row-span-1"} col-span-1 drop-shadow-lg z-30 text-white`}>
+        <div className={`relative ${tipo == true ? alturaPoco : alturaCaixa} w-full min-w-[192px] bg-[#3B3B3B] rounded-lg ${tipo == true ? "row-span-2" : "row-span-1"} col-span-1 drop-shadow-lg z-30 text-white`}>
             <div className="flex justify-between items-center py-6 px-9">
                 <TooltipProvider>
                     <Tooltip>
@@ -96,9 +96,9 @@ export function ModeloNivel({ altura = 0, capacidade = 0, nome = "Nível", tipo 
                             <span className="text-base font-normal">{` / ${capacidade} m`}</span>
                         </p>
                     </div>
-                    <div className={`absolute border-[3px] rounded-lg w-[196px] h-[40px] ${tipo == 1 ? "" : "hidden"} z-20`} />
-                    <div className={`absolute border-[3px] rounded-lg w-[196px] ${tipo == 1 ? "h-[56px]" : "h-[30px]"} z-10`} />
-                    <Progress height={`${tipo == 1 ? tamanhoPoco : tamanhoCaixa}`} value={altura && capacidade ? (altura / capacidade) * 100 : 0}
+                    <div className={`absolute border-[3px] rounded-lg w-[196px] h-[40px] ${tipo == true ? "" : "hidden"} z-20`} />
+                    <div className={`absolute border-[3px] rounded-lg w-[196px] ${tipo == true ? "h-[56px]" : "h-[30px]"} z-10`} />
+                    <Progress height={`${tipo == true ? tamanhoPoco : tamanhoCaixa}`} value={altura && capacidade ? (altura / capacidade) * 100 : 0}
                         color={bgcor} className="w-[196px] z-0" />
                 </div>
             </div>

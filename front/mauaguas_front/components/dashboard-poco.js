@@ -18,7 +18,7 @@ export default function DashboardPoco() {
                         altura={50}
                         capacidade={100}
                         hidden={true}
-                        tipo={1}
+                        tipo={true}
                     />
                 </div>
                 <div className="row-span-2 col-span-4 h-[515px] xl:col-span-3 xl:row-span-2">
