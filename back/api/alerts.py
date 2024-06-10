@@ -37,4 +37,4 @@ class Alerts:
         to='whatsapp:+5511998081809'
         )
 
-        return (message.sid)
+        return(message.sid)
