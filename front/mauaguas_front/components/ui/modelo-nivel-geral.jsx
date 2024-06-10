@@ -6,7 +6,7 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip"
 
-export function ModeloNivel({ altura = 0, capacidade = 0, nome = "Nível", tipo = false, hidden = false}) {
+export function ModeloNivel({ altura = 0, capacidade = 0, nome = "Nível", tipo = false, hidden = false, className}) {
     const alturaPoco = "h-[515px]";
     const alturaCaixa = "h-[250px]";
     const tamanhoPoco = "h-[420px]";
@@ -41,7 +41,7 @@ export function ModeloNivel({ altura = 0, capacidade = 0, nome = "Nível", tipo 
     }
 
     return (
-        <div className={`relative ${tipo == true ? alturaPoco : alturaCaixa} w-full min-w-[192px] bg-[#3B3B3B] rounded-lg ${tipo == true ? "row-span-2" : "row-span-1"} col-span-1 drop-shadow-lg z-30 text-white`}>
+        <div className={`relative ${tipo == true ? alturaPoco : alturaCaixa} w-full min-w-[192px] bg-[#3B3B3B] rounded-lg ${tipo == true ? "row-span-2" : "row-span-1"} col-span-1 drop-shadow-lg z-30 text-white ${className} `}>
             <div className="flex justify-between items-center py-6 px-9">
                 <TooltipProvider>
                     <Tooltip>

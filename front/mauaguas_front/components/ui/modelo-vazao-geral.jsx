@@ -12,6 +12,7 @@ export function ModeloVazao({
   nome = "Vazão",
   tipo = 0,
   hidden = false,
+  className
 }) {
   const alturaPoco = "h-[515px]";
   const alturaCaixa = "h-[250px]";
@@ -52,7 +53,7 @@ export function ModeloVazao({
         tipo == 1 ? alturaPoco : alturaCaixa
       } w-full min-w-[192px] bg-[#3B3B3B] rounded-lg ${
         tipo == 1 ? "row-span-2" : "row-span-1"
-      } col-span-1 drop-shadow-lg`}
+      } col-span-1 drop-shadow-lg ${className}`}
     >
       <div className="flex justify-between items-center pt-6 px-9 z-40">
         <TooltipProvider>

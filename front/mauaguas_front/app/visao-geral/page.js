@@ -14,20 +14,17 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Link from "next/link";
 const link = process.env.NEXT_PUBLIC_LINK;
 
 async function getIds() {
-  const res = await fetch(
-    `${link}/get/reservoirs_ids`
-  );
+  const res = await fetch(`${link}/get/reservoirs_ids`);
   const ids = await res.json();
   return ids;
 }
 
 async function getReservoir(id) {
-  const res = await fetch(
-    `${link}/get/reservoir_by_id/${id}`
-  );
+  const res = await fetch(`${link}/get/reservoir_by_id/${id}`);
   const data = await res.json();
   const usefullData = [data["name"], data["height"], data["well"]];
   return usefullData;
@@ -46,17 +43,20 @@ async function getReservoirsData(reservoirs_ids) {
   return reservoirsData;
 }
 async function getReservoirStatus(id) {
-  const res = await fetch(
-    `${link}/get/lastest_reservoir_status_by_id/${id}`
-  );
+  const res = await fetch(`${link}/get/lastest_reservoir_status_by_id/${id}`);
   const data = await res.json();
-  const waterHeight = [data["water_height"], data["water_flow_out"]];
+  const waterHeight = [
+    data["water_height"],
+    data["water_flow_out"],
+    data["id"],
+  ];
   return waterHeight;
 }
 
 export default async function VisaoGeral() {
   const ids = await getIds();
   const reservoirsData = await getReservoirsData(ids);
+  console.log(reservoirsData);
 
   return (
     <main className="flex min-h-screen flex-col bg-[#303030]">
@@ -120,37 +120,51 @@ export default async function VisaoGeral() {
         <div className="text-white mx-10 my-4">
           <TabsContent value="nivel">
             <div className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
-              <ModeloNivel
-                altura={1500}
-                capacidade={2500}
-                nome={"Poço"}
-                tipo={true}
-              />
-              {reservoirsData.map((reservoirData, index) => (
-                <div key={index}>
-                  <ModeloNivel
-                    altura={reservoirData[1] - Math.abs(reservoirData[3] / 100).toFixed(2)}
-                    capacidade={reservoirData[1]}
-                    nome={reservoirData[0]}
-                    tipo={reservoirData[2]}
-                  />
-                </div>
-              ))}
+              {reservoirsData
+                .sort((a, b) => b[2] - a[2])
+                .map((reservoirData, index) => (
+                  <Link
+                    className="p-0 m-0 h-fit"
+                    href={`/dashboard-detalhado/${reservoirData[5]}`}
+                    key={reservoirData[0]}
+                  >
+                    <div key={index}>
+                      <ModeloNivel
+                        className="hover:scale-[1.03] hover:ease-in-out transition duration-100"
+                        altura={
+                          reservoirData[1] -
+                          Math.abs(reservoirData[3] / 100).toFixed(2)
+                        }
+                        capacidade={reservoirData[1]}
+                        nome={reservoirData[0]}
+                        tipo={reservoirData[2]}
+                      />
+                    </div>
+                  </Link>
+                ))}
             </div>
           </TabsContent>
           <TabsContent value="vazao">
             <div className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2">
-              <ModeloVazao nome="Poço" vazao={1000} maximo={1500} tipo={true} />
-              {reservoirsData.map((reservoirData, index) => (
-                <div key={index}>
-                  <ModeloVazao
-                    vazao={reservoirData[4].toFixed(2)}
-                    maximo={60}
-                    nome={reservoirData[0]}
-                    tipo={reservoirData[2]}
-                  />
-                </div>
-              ))}
+              {reservoirsData
+                .sort((a, b) => b[2] - a[2])
+                .map((reservoirData, index) => (
+                  <Link
+                    className="p-0 m-0 h-fit"
+                    href={`/dashboard-detalhado/${reservoirData[5]}`}
+                    key={reservoirData[0]}
+                  >
+                    <div key={index}>
+                      <ModeloVazao
+                        className="hover:scale-[1.03] hover:ease-in-out transition duration-100"
+                        vazao={reservoirData[4].toFixed(2)}
+                        maximo={60}
+                        nome={reservoirData[0]}
+                        tipo={reservoirData[2]}
+                      />
+                    </div>
+                  </Link>
+                ))}
             </div>
           </TabsContent>
         </div>
