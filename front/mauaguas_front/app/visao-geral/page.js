@@ -14,14 +14,13 @@ import {
   DropdownMenuLabel,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-const link = "https://9b72-2804-7f0-1d-327-e2a8-fbc8-3df8-f709.ngrok-free.app"
+const link = process.env.NEXT_PUBLIC_LINK;
 
 async function getIds() {
   const res = await fetch(
     `${link}/get/reservoirs_ids`
   );
   const ids = await res.json();
-  console.log(ids)
   return ids;
 }
 
@@ -31,7 +30,6 @@ async function getReservoir(id) {
   );
   const data = await res.json();
   const usefullData = [data["name"], data["height"], data["well"]];
-  console.log(usefullData)
   return usefullData;
 }
 
@@ -53,7 +51,6 @@ async function getReservoirStatus(id) {
   );
   const data = await res.json();
   const waterHeight = [data["water_height"], data["water_flow_out"]];
-  console.log(waterHeight)
   return waterHeight;
 }
 

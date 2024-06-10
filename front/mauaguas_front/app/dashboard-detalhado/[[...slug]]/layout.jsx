@@ -4,20 +4,13 @@ import { Search } from "lucide-react";
 import {
   Sheet,
   SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
-import DashboardCaixa from "@/components/dashboard-caixa";
-import DashboardPoco from "@/components/dashboard-poco";
-import Image from "next/image";
 import Link from "next/link";
 
 export default async function Detalhes({ params, children }) {
-  const link =
-    "https://9b72-2804-7f0-1d-327-e2a8-fbc8-3df8-f709.ngrok-free.app";
+  const link = process.env.NEXT_PUBLIC_LINK;
 
   async function getIds() {
     const res = await fetch(`${link}/get/reservoirs_ids`);

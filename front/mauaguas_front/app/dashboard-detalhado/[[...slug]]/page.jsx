@@ -4,8 +4,7 @@ import DashboardCaixa from "@/components/dashboard-caixa";
 export default async function Page({ params }) {
   const { slug } = params;
 
-  const link =
-    "https://9b72-2804-7f0-1d-327-e2a8-fbc8-3df8-f709.ngrok-free.app";
+  const link = process.env.NEXT_PUBLIC_LINK;
 
   async function getReservoir(slug) {
     const res = await fetch(`${link}/get/reservoir_by_id/${slug}`);
