@@ -29,7 +29,7 @@ export default function NavBar({ activePage }) {
                 Visão Geral
               </NavItem>
               <NavItem
-                href="/dashboard-detalhado"
+                href="/dashboard-detalhado/teste"
                 active={activePage === "dashboard-detalhado"}
               >
                 Dashboard Detalhado
