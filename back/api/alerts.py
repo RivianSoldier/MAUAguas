@@ -1,5 +1,6 @@
 import json
 import os
+from twilio.rest import Client
 
 class Alerts:
     
@@ -24,7 +25,16 @@ class Alerts:
             return f"Registro para {id} com alert {alert_value} foi bem-sucedido."
         except Exception as e:
             return f"Falha ao registrar para {id} com alert {alert_value}: {e}"
-
+        
     @staticmethod
-    def alert3(id,alert_value):
-        pass
+    def alert3(id, alert_value):
+        account_sid = 'AC029b4069c50a254f056ee17016a92c82'
+        auth_token = 'fc6603f7ccfce40849677a6bd7990c70'
+        client = Client(account_sid, auth_token)
+        message = client.messages.create(
+        from_='whatsapp:+14155238886',
+        body=f"Alerta para ID {id} com valor de alerta {alert_value}.",
+        to='whatsapp:+5511998081809'
+        )
+
+        return (message.sid)
