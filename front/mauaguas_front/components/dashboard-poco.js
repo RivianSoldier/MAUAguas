@@ -98,7 +98,7 @@ export default function DashboardPoco({
           <Chart data={reservoirData} />
         </div>
         <div className="sm:col-span-2 xl:col-span-1 col-span-4">
-          <ModeloVazao vazao={water_flow_out} hidden={true} />
+          <ModeloVazao vazao={water_flow_out.toFixed(2)} hidden={true} />
         </div>
         <div className="sm:col-span-2 xl:col-span-1 col-span-4 bg-[#3B3B3B] rounded-lg drop-shadow-lg flex flex-col items-center justify-evenly h-[250px]">
           <p className="text-center font-bold w-[80%]">
@@ -114,13 +114,17 @@ export default function DashboardPoco({
           </p>
           <div className="flex flex-wrap justify-evenly items-center mb-3">
             <div className="my-3 mx-5 h-[150px] min-w-[150px] rounded-full border-[15px] border-[#89CAF9] flex flex-col justify-end items-center">
-              <p className="font-bold text-2xl">{water_flow_in} PSI</p>
+              <p className="font-bold text-2xl">
+                {water_flow_in.toFixed(2)} PSI
+              </p>
               <p className="bg-[#3B3B3B] mt-4 -mb-4 p-3 text-[#89CAF9]">
                 Entrada
               </p>
             </div>
             <div className="h-[150px] mx-5 min-w-[150px] rounded-full border-[15px] border-[#F989B2] flex flex-col justify-end items-center">
-              <p className="font-bold text-2xl">{water_flow_out} PSI</p>
+              <p className="font-bold text-2xl">
+                {water_flow_out.toFixed(2)} PSI
+              </p>
               <p className="bg-[#3B3B3B] mt-4 -mb-4 p-3 text-[#F989B2]">
                 Saída
               </p>

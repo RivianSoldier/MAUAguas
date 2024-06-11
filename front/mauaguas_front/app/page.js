@@ -30,6 +30,7 @@ export default function Home() {
       (values.email === process.env.NEXT_PUBLIC_USER_GENERAL &&
         values.password === process.env.NEXT_PUBLIC_GENERAL_PASSWORD)
     ) {
+      localStorage.setItem("user", values.email);
       router.push("/visao-geral");
     } else {
       console.log("Invalid credentials");

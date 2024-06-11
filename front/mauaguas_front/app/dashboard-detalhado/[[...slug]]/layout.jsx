@@ -79,12 +79,34 @@ export default async function Detalhes({ params, children }) {
               className="pt-20 border-0 flex flex-col items-center justify-start bg-[#3b3b3b] gap-4 shadow-lg fixed"
             >
               <div className="flex px-2 flex-col gap-3 overflow-y-auto overflow-x-hidden pb-80 pr-2 h-screen">
-                <div className="flex flex-row min-h-14 w-full border-[#505050] border-2 rounded-lg justify-between items-center text-white cursor-pointer hover:scale-[1.03] duration-75">
-                  <p className="pl-3">Poço</p>
-                  <div className="flex items-center justify-end pr-3 rounded-r-md bg-[#89caf9] h-full w-20">
-                    1500 m
-                  </div>
-                </div>
+                {Object.entries(names)
+                  .sort((a, b) => b[1][2] - a[1][2])
+                  .map(([id, name]) => {
+                    return (
+                      <Link
+                        className="p-0 m-0"
+                        href={`/dashboard-detalhado/${id}`}
+                        key={id}
+                      >
+                        <div
+                          className={`flex flex-row min-h-14 w-[19rem] border-[#505050] border-2 rounded-lg justify-between items-center text-white cursor-pointer hover:scale-[1.03] duration-75 ${
+                            id === reservoirId
+                              ? getBgColor(formula(name[1], name[3]))
+                              : ""
+                          }`}
+                        >
+                          <p className="pl-3">{name[0]}</p>
+                          <div
+                            className={`flex items-center justify-end pr-3 rounded-r-md ${getBgColor(
+                              formula(name[1], name[3])
+                            )} min-h-14 w-20`}
+                          >
+                            {name[1] - Math.abs(name[3] / 100).toFixed(2)} M
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })}
               </div>
             </SheetContent>
           </Sheet>
