@@ -1,70 +1,70 @@
 {
-    " Caixa_bloco_A ": {
-        "id": " Caixa_bloco_A ",
-        "name": " Caixa_A ",
+    "Caixa_bloco_A": {
+        "id": "Caixa_bloco_A",
+        "name": "Caixa_A",
         "well": false,
         "height": 1.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_B ": {
-        "id": " Caixa_bloco_B ",
-        "name": " Caixa_B ",
+    "Caixa_bloco_B": {
+        "id": "Caixa_bloco_B",
+        "name": "Caixa_B",
         "well": false,
         "height": 2.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_C ": {
-        "id": " Caixa_bloco_C ",
-        "name": " Caixa_C",
+    "Caixa_bloco_C": {
+        "id": "Caixa_bloco_C",
+        "name": "Caixa_C",
         "well": false,
         "height": 3.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_D": {
-        "id": " Caixa_bloco_D",
-        "name": " Caixa_D",
+    "Caixa_bloco_D": {
+        "id": "Caixa_bloco_D",
+        "name": "Caixa_D",
         "well": false,
         "height": 4.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_E ": {
-        "id": " Caixa_bloco_E ",
-        "name": " Caixa_E ",
+    "Caixa_bloco_E": {
+        "id": "Caixa_bloco_E",
+        "name": "Caixa_E",
         "well": false,
         "height": 5.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_F ": {
-        "id": " Caixa_bloco_F ",
-        "name": " Caixa_F ",
+    "Caixa_bloco_F": {
+        "id": "Caixa_bloco_F",
+        "name": "Caixa_F",
         "well": false,
         "height": 6.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_G ": {
-        "id": " Caixa_bloco_G ",
-        "name": " Caixa_G ",
+    "Caixa_bloco_G": {
+        "id": "Caixa_bloco_G",
+        "name": "Caixa_G",
         "well": false,
         "height": 7.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_H ": {
-        "id": " Caixa_bloco_H ",
-        "name": " Caixa_H ",
+    "Caixa_bloco_H": {
+        "id": "Caixa_bloco_H",
+        "name": "Caixa_H",
         "well": false,
         "height": 8.0,
         "alert_limit_1": 15.0,
@@ -80,35 +80,35 @@
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_J ": {
-        "id": " Caixa_bloco_J ",
-        "name": " Caixa_J ",
+    "Caixa_bloco_J": {
+        "id": "Caixa_bloco_J",
+        "name": "Caixa_J",
         "well": false,
         "height": 10.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_K ": {
-        "id": " Caixa_bloco_K ",
-        "name": " Caixa_K ",
+    "Caixa_bloco_K": {
+        "id": "Caixa_bloco_K",
+        "name": "Caixa_K",
         "well": false,
         "height": 11.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_L ": {
-        "id": " Caixa_bloco_L ",
-        "name": " Caixa_L ",
+    "Caixa_bloco_L": {
+        "id": "Caixa_bloco_L",
+        "name": "Caixa_L",
         "well": false,
         "height": 12.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_M ": {
-        "id": " Caixa_bloco_M ",
+    "Caixa_bloco_M": {
+        "id": "Caixa_bloco_M",
         "name": " Caixa_M ",
         "well": false,
         "height": 13.0,
@@ -117,97 +117,97 @@
         "alert_limit_3": 5.0
     },
     " Caixa_bloco_N ": {
-        "id": " Caixa_bloco_N ",
-        "name": " Caixa_N ",
+        "id": "Caixa_bloco_N",
+        "name": "Caixa_N",
         "well": false,
         "height": 14.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_O ": {
-        "id": " Caixa_bloco_O ",
-        "name": " Caixa_O ",
+    "Caixa_bloco_O": {
+        "id": "Caixa_bloco_O",
+        "name": "Caixa_O",
         "well": false,
         "height": 15.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_P ": {
+    "Caixa_bloco_P": {
         "id": " Caixa_bloco_P ",
-        "name": " Caixa_P ",
+        "name": "Caixa_P",
         "well": false,
         "height": 16.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_Q ": {
+    "Caixa_bloco_Q": {
         "id": " Caixa_bloco_Q ",
-        "name": " Caixa_Q ",
+        "name": "Caixa_Q",
         "well": false,
         "height": 17.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_R ": {
-        "id": " Caixa_bloco_R ",
-        "name": " Caixa_R ",
+    "Caixa_bloco_R": {
+        "id": "Caixa_bloco_R",
+        "name": "Caixa_R",
         "well": false,
         "height": 18.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_S ": {
-        "id": " Caixa_bloco_S ",
-        "name": " Caixa_S ",
+    "Caixa_bloco_S": {
+        "id": "Caixa_bloco_S",
+        "name": "Caixa_S",
         "well": false,
         "height": 19.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_T ": {
-        "id": " Caixa_bloco_T ",
-        "name": " Caixa_T ",
+    "Caixa_bloco_T": {
+        "id": "Caixa_bloco_T",
+        "name": "Caixa_T",
         "well": false,
         "height": 20.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_U ": {
-        "id": " Caixa_bloco_U ",
-        "name": " Caixa_U ",
+    "Caixa_bloco_U": {
+        "id": "Caixa_bloco_U",
+        "name": "Caixa_U",
         "well": false,
         "height": 21.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_V ": {
-        "id": " Caixa_bloco_V ",
-        "name": " Caixa_V ",
+    "Caixa_bloco_V": {
+        "id": "Caixa_bloco_V",
+        "name": "Caixa_V",
         "well": false,
         "height": 22.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_W ": {
-        "id": " Caixa_bloco_W ",
-        "name": " Caixa_W ",
+    "Caixa_bloco_W": {
+        "id": "Caixa_bloco_W",
+        "name": "Caixa_W",
         "well": false,
         "height": 23.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Poco_Principal ": {
-        "id": " Poco_Principal ",
+    "Poco_Principal": {
+        "id": "Poco_Principal",
         "name": "Principal",
         "well": true,
         "height": 24.0,
@@ -224,8 +224,8 @@
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_Central": {
-        "id": " Caixa_Central",
+    "Caixa_Central": {
+        "id": "Caixa_Central",
         "name": "Central",
         "well": false,
         "height": 26.0,

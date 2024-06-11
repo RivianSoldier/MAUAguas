@@ -45,6 +45,3 @@ class simulador:
         reservoir = RecordsDB.get_reservoir_by_id(id)
         is_well = reservoir["well"]
         return is_well
-
-
-simulador.start_simulador(["teste"])
