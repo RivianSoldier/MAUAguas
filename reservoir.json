@@ -71,7 +71,7 @@
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_I ": {
+    "Caixa_bloco_I": {
         "id": " Caixa_bloco_I ",
         "name": " Caixa_I ",
         "well": false,
@@ -116,7 +116,7 @@
         "alert_limit_2": 10.0,
         "alert_limit_3": 5.0
     },
-    " Caixa_bloco_N ": {
+    "Caixa_bloco_N": {
         "id": "Caixa_bloco_N",
         "name": "Caixa_N",
         "well": false,
@@ -218,7 +218,7 @@
     "Poco_Secundario": {
         "id": "Poco_Secundario",
         "name": "Secundario",
-        "well": false,
+        "well": true,
         "height": 25.0,
         "alert_limit_1": 15.0,
         "alert_limit_2": 10.0,
