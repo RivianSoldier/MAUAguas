@@ -78,13 +78,6 @@ export default async function Detalhes({ params, children }) {
               side="left"
               className="pt-20 border-0 flex flex-col items-center justify-start bg-[#3b3b3b] gap-4 shadow-lg fixed"
             >
-              <div className="relative">
-                <Input
-                  placeholder="Procurar..."
-                  className="bg-[#505050] border-none text-white w-80 h-14"
-                />
-                <Search className="absolute right-2 top-5 h-5 w-5 text-white" />
-              </div>
               <div className="flex px-2 flex-col gap-3 overflow-y-auto overflow-x-hidden pb-80 pr-2 h-screen">
                 <div className="flex flex-row min-h-14 w-full border-[#505050] border-2 rounded-lg justify-between items-center text-white cursor-pointer hover:scale-[1.03] duration-75">
                   <p className="pl-3">Poço</p>
@@ -97,13 +90,6 @@ export default async function Detalhes({ params, children }) {
           </Sheet>
 
           <div className="flex flex-col items-center justify-start pt-28 w-[22rem] bg-[#3b3b3b] gap-4 shadow-lg rounded-r-xl fixed invisible md:visible">
-            <div className="relative">
-              <Input
-                placeholder="Procurar..."
-                className="bg-[#505050] border-none text-white w-[19rem] h-14 m"
-              />
-              <Search className="absolute right-2 top-5 h-5 w-5 text-white" />
-            </div>
             <div className="flex px-2 flex-col gap-3 overflow-y-auto overflow-x-hidden pb-80 pr-2 h-screen">
               {Object.entries(names)
                 .sort((a, b) => b[1][2] - a[1][2])

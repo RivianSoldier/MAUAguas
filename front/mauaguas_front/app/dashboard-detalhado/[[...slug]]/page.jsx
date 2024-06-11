@@ -70,21 +70,23 @@ export default async function Page({ params }) {
       {data[2] === false ? (
         <DashboardCaixa
           nome={data[0]}
-          formattedTime={formattedTime}
+          initialFormattedTime={formattedTime}
           altura={data[1] - Math.abs(data[3] / 100).toFixed(2)}
           capacidade={data[1]}
           data={ResevoirStatus}
+          slug={slug}
         />
       ) : (
         <DashboardPoco
           nome={data[0]}
-          formattedTime={formattedTime}
+          initialFormattedTime={formattedTime}
           altura={data[1] - Math.abs(data[3] / 100).toFixed(2)}
           capacidade={data[1]}
           time_pump={data[8]}
           water_flow_in={data[5]}
           water_flow_out={data[4]}
           data={ResevoirStatus}
+          slug={slug}
         />
       )}
     </>
