@@ -56,7 +56,6 @@ export default async function Detalhes({ params, children }) {
     return reservoirsData;
   }
   const names = await getNames(ids);
-  console.log(names);
 
   const { slug } = params;
   const reservoirId = slug?.[0];

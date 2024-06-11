@@ -39,7 +39,6 @@ async function getReservoirsData(reservoirs_ids) {
       return reservoirData;
     })
   );
-  console.log(reservoirsData);
   return reservoirsData;
 }
 async function getReservoirStatus(id) {
@@ -56,7 +55,6 @@ async function getReservoirStatus(id) {
 export default async function VisaoGeral() {
   const ids = await getIds();
   const reservoirsData = await getReservoirsData(ids);
-  console.log(reservoirsData);
 
   return (
     <main className="flex min-h-screen flex-col bg-[#303030]">

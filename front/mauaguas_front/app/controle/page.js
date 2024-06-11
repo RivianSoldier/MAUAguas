@@ -14,6 +14,15 @@ import {
 import { CardUpdate } from "@/components/ui/card-update";
 import { Search } from "lucide-react";
 
+const link = process.env.NEXT_PUBLIC_LINK;
+
+async function getIds() {
+  const res = await fetch(`${link}/get/reservoirs_ids`);
+  const ids = await res.json();
+  return ids;
+}
+const ids = await getIds();
+
 export default function DashboardDetalhado() {
   return (
     <main className="flex min-h-screen w-full flex-col bg-[#303030]">
