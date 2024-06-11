@@ -18,7 +18,7 @@ export function ModeloVazao({
   const alturaCaixa = "h-[250px]";
   const bordaPoco = "border-[380px]";
   const bordaCaixa = "border-[100px]";
-
+  
   var cor = "#89CAF9";
   var bordercor = "border-b-[#89CAF9]";
   var textcor = "text-[#89CAF9]";

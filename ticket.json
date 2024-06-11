@@ -18,5 +18,10 @@
         "id": "eduardo",
         "alert": "35",
         "message": "Caixa D'\u00c1gua eduardo est\u00e1 abaixo do limite 2 35"
+    },
+    "Ticket Caixa D'Agua reno": {
+        "id": "reno",
+        "alert": "35",
+        "message": "Caixa D'\u00c1gua reno est\u00e1 abaixo do limite 2 35"
     }
 }

@@ -13,7 +13,7 @@ class simulador:
             saida_nova = ultimo["water_flow_out"]*(randint(0,2000)/1000)
 
             if not simulador.is_well(id):
-                horas_novo = ultimo["bomb_hours"]
+                horas_novo = 0
             else:
                 horas_novo = simulador.bomb_hours_simulator( ultimo["bomb_hours"] , saida_nova)
 
@@ -28,6 +28,7 @@ class simulador:
                     bomb_hours=horas_novo
                 )
             RecordsDB.post_reservoir_status(status)
+        return "Status simulated and posted if sucess"
                 
 
             
