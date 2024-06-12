@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 
 export default function NavBar({ activePage }) {
   const user = localStorage.getItem("user");
-  console.log(user);
   const [windowWidth, setWindowWidth] = useState(0);
   useEffect(() => {
     setWindowWidth(window.innerWidth);

@@ -66,9 +66,9 @@ export default function DashboardCaixa({
       await fetchReservoirChart();
     };
 
-    fetchData(); // Fetch data immediately
+    fetchData(); 
 
-    const interval = setInterval(fetchData, 10000); // Fetch data every 10 seconds
+    const interval = setInterval(fetchData, 10000); 
 
     return () => clearInterval(interval);
   }, [slug]);
