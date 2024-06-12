@@ -101,7 +101,6 @@ class RecordsDB:
     @staticmethod
     def get_lastest_reservoir_status_by_id(id: str):
         last_status = DataBase.get_lastest_reservoir_status_by_id(id)
-        print(last_status)
         # Extracting values from nested lists
         bomb_hours = float(str(last_status["bomb_hours"][0]))
         id_value = (str(last_status["id"][0]))

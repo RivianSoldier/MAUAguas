@@ -73,6 +73,7 @@ def post_resevoir_parameters():
         height=data.get('height'),
         alert_limit_1=data.get('alert_limit_1'),
         alert_limit_2=data.get('alert_limit_2'),
+        time_stamp = data.get('time_stamp'),
         alert_limit_3=data.get('alert_limit_3')
     )
     response = RecordsDB.post_reservoir_parameters(reservoir_parameters)
@@ -111,8 +112,7 @@ def update_record_limit_3(id:str,limit:float):
 def start_simulator(id:str):
     is_id = RecordsDB.id_existis(id)
     if is_id:
-        ids = [id]
-        response = simulador.start_simulador(ids)
+        response = simulador.start_simulador(id)
         print(response)
         return response
     return "ID not exists on the database"
