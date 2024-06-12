@@ -1,10 +1,6 @@
 import json
 import os
-from twilio.rest import Client
-
-account_sid = "AC245b2eb78f11ea5d58e7d3705342636d"
-auth_token = '68fdb232905b47a60db7e64ca3a8a9ca'
-client = Client(account_sid, auth_token)
+import pywhatkit
 
 class Alerts:
 
@@ -53,16 +49,10 @@ class Alerts:
 
     
     @staticmethod
-    def alert3(id:str,limit_3:str):
-        from_whatsapp_number = 'whatsapp:+14155238886:'  
-        to_whatsapp_number = 'whatsapp:+5511989323635'
-        
-        message_body = f"Caixa D'Água {id} está abaixo do limite 3 de {limit_3}"
-        
-        message = client.messages.create(
-                    body=message_body,
-                    from_=from_whatsapp_number,
-                    to=to_whatsapp_number
-                )
-        
-        print(f"Message sent with SID: {message.sid}")
+    def alert3(id:str,alert_value:str):
+        phone_number ="+5511998030023"
+        try:
+            pywhatkit.sendwhatmsg_instantly(phone_number,f"A caixa d'água de ID: \n \"{id}\" \n Está em estado critíco abaixo do limite: \n \"{alert_value}\"")
+            return "Mensagem enviada com sucesso"
+        except:
+            return "Erro ao enviar a mensagem"

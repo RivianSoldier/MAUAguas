@@ -40,29 +40,31 @@ class DataBase:
             json.dump(data, json_file, indent=4) 
         print("Reservoir parameters posted successfully.")
 
-    def post_reservoir_status(status: ReservoirStatus):
+    @staticmethod
+    def post_reservoir_status(status):
         try:
-            time_stamp_str = status.time_stamp.isoformat()  # Converter para ISO 8601
+            time_stamp_str = status["time_stamp"].isoformat()  # Ensure time_stamp is correctly formatted
             json_body = [
                 {
                     "measurement": "reservoir_status",
                     "tags": {
-                        "id": status.id
+                        "id": status["id"]
                     },
                     "fields": {
-                        "water_height" : status.water_height,
-                        "water_flow_in": status.water_flow_in,
-                        "water_flow_out": status.water_flow_out,
-                        "water_humidity": status.water_humidity,
-                        "water_voltage": status.water_voltage,
-                        "time_stamp": time_stamp_str,  # Usar a string formatada ISO 8601
-                        "bomb_hours": status.bomb_hours
+                        "water_height": status["water_height"],
+                        "water_flow_in": status["water_flow_in"],
+                        "water_flow_out": status["water_flow_out"],
+                        "water_humidity": status["water_humidity"],
+                        "water_voltage": status["water_voltage"],
+                        "time_stamp": time_stamp_str,
+                        "bomb_hours": status["bomb_hours"]
                     }
                 }
             ]
+            print(json_body)
             client.write(database='water_tank', record=json_body)
             return "Reservoir status posted successfully."
-        except Exception as e: 
+        except Exception as e:
             return f"Failed to post status: {str(e)}"
 
     @staticmethod
