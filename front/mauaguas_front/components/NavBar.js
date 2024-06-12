@@ -5,6 +5,7 @@ import SidebarNav from "./sidebar-nav";
 import { useEffect, useState } from "react";
 
 export default function NavBar({ activePage }) {
+  const user = localStorage.getItem("user");
   const [windowWidth, setWindowWidth] = useState(0);
   useEffect(() => {
     setWindowWidth(window.innerWidth);
@@ -29,19 +30,22 @@ export default function NavBar({ activePage }) {
                 Visão Geral
               </NavItem>
               <NavItem
-                href="/dashboard-detalhado"
+                href="/dashboard-detalhado/Poco_Principal"
                 active={activePage === "dashboard-detalhado"}
               >
                 Dashboard Detalhado
               </NavItem>
-              <NavItem href="/controle" active={activePage === "controle"}>
-                <Image
-                  src="/settings.svg"
-                  alt="Settings"
-                  width={24}
-                  height={24}
-                />
-              </NavItem>
+              {user === "admin@gms.br" && (
+                <NavItem href="/controle" active={activePage === "controle"}>
+                  <Image
+                    src="/settings.svg"
+                    alt="Settings"
+                    width={24}
+                    height={24}
+                  />
+                </NavItem>
+              )}
+
               <NavItem href="/" active={activePage === "sair"}>
                 Sair
               </NavItem>
