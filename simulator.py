@@ -10,8 +10,8 @@ class simulador:
         altura_nova = ultimo["water_height"] - (
             ultimo["water_flow_in"] - ultimo["water_flow_out"]
         ) * (random() - 0.5)
-        entrada_nova = ultimo["water_flow_in"] * (randint(0, 2000) / 1000)
-        saida_nova = ultimo["water_flow_out"] * (randint(0, 2000) / 1000)
+        entrada_nova = ultimo["water_flow_in"] * (randint(500, 2000) / 1000)
+        saida_nova = ultimo["water_flow_out"] * (randint(500, 2000) / 1000)
 
         if not simulador.is_well(id):
             horas_novo = 0
@@ -48,10 +48,10 @@ class simulador:
         is_well = reservoir["well"]
         return is_well
 
-while True:
-        ids = RecordsDB.get_resorvoirs_ids()
-        for id in ids:
-            response = simulador.start_simulador(id)
-            print(response)
-        print("Esperando 5 minutos para a proxima leitura")  
-        time.sleep(300)
+# while True:
+#         ids = RecordsDB.get_resorvoirs_ids()
+#         for id in ids:
+#             response = simulador.start_simulador(id)
+#             print(response)
+#         print("Esperando 5 minutos para a proxima leitura")  
+#         time.sleep(300)
