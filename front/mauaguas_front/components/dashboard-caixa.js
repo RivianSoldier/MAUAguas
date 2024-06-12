@@ -11,6 +11,7 @@ export default function DashboardCaixa({
   altura,
   capacidade,
   data,
+  water_flow_out,
   slug,
 }) {
   const link = process.env.NEXT_PUBLIC_LINK;
@@ -92,7 +93,7 @@ export default function DashboardCaixa({
             />
           </div>
           <div className="col-span-4 xl:col-span-2 sm:col-span-1">
-            <ModeloVazao vazao={50} maximo={100} hidden={true} />
+            <ModeloVazao vazao={water_flow_out.toFixed(2)} maximo={100} hidden={true} />
           </div>
         </div>
         <div className="w-full col-span-4 xl:col-span-3 flex row-span-2 items-center justify-center h-[510px]">

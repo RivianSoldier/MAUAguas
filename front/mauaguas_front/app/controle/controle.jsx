@@ -28,6 +28,7 @@ const FormSchema2 = z.object({
 const FormSchema3 = z.object({
   limit3: z.string().min(1).max(3),
 });
+const link = process.env.NEXT_PUBLIC_LINK;
 
 export default function Controle({ ids, dataRes }) {
   const form1 = useForm({
@@ -49,12 +50,9 @@ export default function Controle({ ids, dataRes }) {
     },
   });
   function onSubmit1(data) {
-    data.limit1 = parseInt(data.limit1);
-
-    // Mapear os IDs e enviar uma requisição para cada um deles
     ids.forEach(async (id) => {
       try {
-        const res = await fetch(`/update/alert_limit_1/${id}/${data.limit1}`, {
+        const res = await fetch(`${link}/update/alert_limit_1/${id}/${data.limit1}`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

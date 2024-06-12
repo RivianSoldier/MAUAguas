@@ -33,13 +33,13 @@ const CustomTooltip = ({ active, payload, label }) => {
           }}
         >
           <p style={{ fontWeight: 600, marginRight: "4px" }}>Nível:</p>
-          <p style={{}}>{`${payload[0].value} L`}</p>
+          <p style={{}}>{`${(payload[0].value).toFixed(2)} m`}</p>
           <p
             style={{ fontWeight: 600, marginLeft: "20px", marginRight: "4px" }}
           >
             Vazão:
           </p>
-          <p>{`${payload[1].value} L/s`}</p>
+          <p>{`${payload[1].value} L/min`}</p>
         </div>
       </div>
     );
@@ -80,13 +80,13 @@ function Chart({ data }) {
         <YAxis
           yAxisId="left"
           tick={{ fill: "white" }}
-          label={{ value: "NÍvel (L)", angle: -90, position: "left" }}
+          label={{ value: "NÍvel (m)", angle: -90, position: "left" }}
         />
         <YAxis
           yAxisId="right"
           orientation="right"
           tick={{ fill: "white" }}
-          label={{ value: "Vazão (L/s)", angle: 90, position: "right" }}
+          label={{ value: "Vazão (L/min)", angle: 90, position: "right" }}
         />
         <Tooltip content={<CustomTooltip />} />
         <Legend />

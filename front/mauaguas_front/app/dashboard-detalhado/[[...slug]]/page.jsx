@@ -6,6 +6,14 @@ export default async function Page({ params }) {
 
   const link = process.env.NEXT_PUBLIC_LINK;
 
+  function padronizarValor(valor) {
+    if (valor === 0) return 0;
+    const strValor = valor.toString();
+    const algarismosDiferentesDeZero = strValor.replace(/[.0]/g, '');
+    const primeirosQuatro = algarismosDiferentesDeZero.substring(0, 4);
+    return parseFloat(primeirosQuatro);
+  }
+
   async function getReservoir(slug) {
     const res = await fetch(`${link}/get/reservoir_by_id/${slug}`);
     const data = await res.json();
@@ -48,7 +56,7 @@ export default async function Page({ params }) {
       return {
         Tempo: `${hour}:${minute}`,
         Nível: data[1] - Math.abs(item.water_height / 100).toFixed(2),
-        Vazão: parseFloat(item.water_flow_out.toFixed(2)),
+        Vazão: parseFloat(padronizarValor(item.water_flow_out)/100),
       };
     });
     return usefulData.slice(0, 12).reverse();
@@ -64,6 +72,8 @@ export default async function Page({ params }) {
       </div>
     );
   }
+  console.log(ResevoirStatus)
+
 
   return (
     <>
@@ -71,8 +81,9 @@ export default async function Page({ params }) {
         <DashboardCaixa
           nome={data[0]}
           initialFormattedTime={formattedTime}
-          altura={data[1] - Math.abs(data[3] / 100).toFixed(2)}
+          altura={(data[1] - Math.abs(data[3] / 100).toFixed(2)).toFixed(2)}
           capacidade={data[1]}
+          water_flow_out={padronizarValor(data[4])/100}
           data={ResevoirStatus}
           slug={slug}
         />
@@ -80,11 +91,11 @@ export default async function Page({ params }) {
         <DashboardPoco
           nome={data[0]}
           initialFormattedTime={formattedTime}
-          altura={data[1] - Math.abs(data[3] / 100).toFixed(2)}
+          altura={(data[1] - Math.abs(data[3] / 100).toFixed(2)).toFixed(2)}
           capacidade={data[1]}
-          time_pump={data[8]}
-          water_flow_in={data[5]}
-          water_flow_out={data[4]}
+          time_pump={data[8].toFixed(0)}
+          water_flow_in={padronizarValor(data[5])/100}
+          water_flow_out={padronizarValor(data[4])/100}
           data={ResevoirStatus}
           slug={slug}
         />

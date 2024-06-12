@@ -9,7 +9,7 @@ export default async function Detalhes({ params, children }) {
   const link = process.env.NEXT_PUBLIC_LINK;
 
   function getBgColor(volume) {
-    let bgcor = "bg-[#3B3B3B]";
+    var bgcor = "bg-[#3B3B3B]";
 
     if (volume > 75) {
       bgcor = "bg-[#89CAF9]";
@@ -61,7 +61,7 @@ export default async function Detalhes({ params, children }) {
   const reservoirId = slug?.[0];
 
   function formula(primeiro, terceiro) {
-    const res = Math.abs((primeiro - terceiro) / primeiro) * 100;
+    const res = Math.abs((Math.abs(primeiro) - (Math.abs(terceiro) / 100)) / Math.abs(primeiro) * 100);
     return res;
   }
 
@@ -81,7 +81,8 @@ export default async function Detalhes({ params, children }) {
               <div className="flex px-2 flex-col gap-3 overflow-y-auto overflow-x-hidden pb-80 pr-2 h-screen">
                 {Object.entries(names)
                   .sort((a, b) => b[1][2] - a[1][2])
-                  .map(([id, name]) => {
+                .filter(([id, name]) => name[0] !== "Caixa_H")
+                .map(([id, name]) => {
                     return (
                       <Link
                         className="p-0 m-0"
@@ -115,6 +116,7 @@ export default async function Detalhes({ params, children }) {
             <div className="flex px-2 flex-col gap-3 overflow-y-auto overflow-x-hidden pb-80 pr-2 h-screen">
               {Object.entries(names)
                 .sort((a, b) => b[1][2] - a[1][2])
+                .filter(([id, name]) => name[0] !== "Caixa_H")
                 .map(([id, name]) => {
                   return (
                     <Link
@@ -135,7 +137,7 @@ export default async function Detalhes({ params, children }) {
                             formula(name[1], name[3])
                           )} min-h-14 w-20`}
                         >
-                          {name[1] - Math.abs(name[3] / 100).toFixed(2)} M
+                          {(name[1] - Math.abs(name[3] / 100).toFixed(2)).toFixed(2)} M
                         </div>
                       </div>
                     </Link>

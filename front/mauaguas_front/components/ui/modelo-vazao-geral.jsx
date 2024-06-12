@@ -107,7 +107,7 @@ export function ModeloVazao({
           <div className="absolute z-20 bottom-5">
             <p className="text-lg font-extrabold text-center">
               {`${vazao}`}
-              <span className="text-base font-bold drop-shadow-lg"> PSI</span>
+              <span className="text-base font-bold drop-shadow-lg"> L/min</span>
             </p>
           </div>
           <div

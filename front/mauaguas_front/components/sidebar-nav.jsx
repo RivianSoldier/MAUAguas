@@ -23,7 +23,7 @@ export default function SidebarNav({ activePage }) {
               Visão Geral
             </NavItem>
             <NavItem
-              href="/dashboard-detalhado"
+              href="/dashboard-detalhado/Poco_Principal"
               active={activePage === "dashboard-detalhado"}
             >
               Dashboard Detalhado

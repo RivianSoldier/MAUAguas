@@ -29,6 +29,13 @@ async function getReservoir(id) {
   const usefullData = [data["name"], data["height"], data["well"]];
   return usefullData;
 }
+function padronizarValor(valor) {
+  if (valor === 0) return 0;
+  const strValor = valor.toString();
+  const algarismosDiferentesDeZero = strValor.replace(/[.0]/g, '');
+  const primeirosQuatro = algarismosDiferentesDeZero.substring(0, 4);
+  return parseFloat(primeirosQuatro);
+}
 
 async function getReservoirsData(reservoirs_ids) {
   const reservoirsData = await Promise.all(
@@ -55,6 +62,8 @@ async function getReservoirStatus(id) {
 export default async function VisaoGeral() {
   const ids = await getIds();
   const reservoirsData = await getReservoirsData(ids);
+  console.log(reservoirsData)
+
 
   return (
     <main className="flex min-h-screen flex-col bg-[#303030]">
@@ -81,6 +90,36 @@ export default async function VisaoGeral() {
         </div>
         <div className="text-white mx-10 my-4">
           <TabsContent value="nivel">
+            <p className="font-semibold text-2xl py-4">Caixas</p>
+            <div
+              className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3
+              sm:grid-cols-2"
+            >
+              {reservoirsData
+                .sort((a, b) => b[2] - a[2])
+                .filter((reservoirData) => reservoirData[2] === false && reservoirData[5] !== "Caixa_bloco_H")
+                .map((reservoirData, index) => (
+                  <Link
+                    className="p-0 m-0 h-fit"
+                    href={`/dashboard-detalhado/${reservoirData[5]}`}
+                    key={reservoirData[0]}
+                  >
+                    <div key={index}>
+                      <ModeloNivel
+                        className="hover:scale-[1.03] hover:ease-in-out transition duration-100"
+                        altura={
+                        parseFloat(reservoirData[1] -
+                          Math.abs(reservoirData[3] / 100).toFixed(2)).toFixed(2)
+                        }
+                        capacidade={reservoirData[1]}
+                        nome={reservoirData[0]}
+                        tipo={reservoirData[2]}
+                      />
+                    </div>
+                  </Link>
+                ))}
+            </div>
+              <Separator className="h-[2px] mt-8" />
             <p className="font-semibold text-2xl py-4">Poços</p>
             <div className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 mb-8">
               {reservoirsData
@@ -97,37 +136,7 @@ export default async function VisaoGeral() {
                         className="hover:scale-[1.03] hover:ease-in-out transition duration-100"
                         altura={
                           reservoirData[1] -
-                          Math.abs(reservoirData[3] / 100).toFixed(2)
-                        }
-                        capacidade={reservoirData[1]}
-                        nome={reservoirData[0]}
-                        tipo={reservoirData[2]}
-                      />
-                    </div>
-                  </Link>
-                ))}
-            </div>
-            <Separator className="h-[2px]" />
-            <p className="font-semibold text-2xl py-4">Caixas</p>
-            <div
-              className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3
-              sm:grid-cols-2"
-            >
-              {reservoirsData
-                .sort((a, b) => b[2] - a[2])
-                .filter((reservoirData) => reservoirData[2] === false)
-                .map((reservoirData, index) => (
-                  <Link
-                    className="p-0 m-0 h-fit"
-                    href={`/dashboard-detalhado/${reservoirData[5]}`}
-                    key={reservoirData[0]}
-                  >
-                    <div key={index}>
-                      <ModeloNivel
-                        className="hover:scale-[1.03] hover:ease-in-out transition duration-100"
-                        altura={
-                          reservoirData[1] -
-                          Math.abs(reservoirData[3] / 100).toFixed(2)
+                          parseFloat(Math.abs(reservoirData[3] / 100).toFixed(2)).toFixed(2)
                         }
                         capacidade={reservoirData[1]}
                         nome={reservoirData[0]}
@@ -140,30 +149,6 @@ export default async function VisaoGeral() {
           </TabsContent>
 
           <TabsContent value="vazao">
-            <p className="font-semibold text-2xl py-4">Poços</p>
-            <div className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 mb-8">
-              {reservoirsData
-                .sort((a, b) => b[2] - a[2])
-                .filter((reservoirData) => reservoirData[2] === true)
-                .map((reservoirData, index) => (
-                  <Link
-                    className="p-0 m-0 h-fit"
-                    href={`/dashboard-detalhado/${reservoirData[5]}`}
-                    key={reservoirData[0]}
-                  >
-                    <div key={index}>
-                      <ModeloVazao
-                        className="hover:scale-[1.03] hover:ease-in-out transition duration-100"
-                        vazao={reservoirData[4].toFixed(2)}
-                        maximo={60}
-                        nome={reservoirData[0]}
-                        tipo={reservoirData[2]}
-                      />
-                    </div>
-                  </Link>
-                ))}
-            </div>
-            <Separator className="h-[2px]" />
             <p className="font-semibold text-2xl py-4">Caixas</p>
             <div
               className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3
@@ -181,7 +166,31 @@ export default async function VisaoGeral() {
                     <div key={index}>
                       <ModeloVazao
                         className="hover:scale-[1.03] hover:ease-in-out transition duration-100"
-                        vazao={reservoirData[4].toFixed(2)}
+                        vazao={padronizarValor(reservoirData[4])/100}
+                        maximo={60}
+                        nome={reservoirData[0]}
+                        tipo={reservoirData[2]}
+                      />
+                    </div>
+                  </Link>
+                ))}
+            </div>
+              <Separator className="h-[2px] mt-8" />
+            <p className="font-semibold text-2xl py-4">Poços</p>
+            <div className="gap-4 grid xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 mb-8">
+              {reservoirsData
+                .sort((a, b) => b[2] - a[2])
+                .filter((reservoirData) => reservoirData[2] === true)
+                .map((reservoirData, index) => (
+                  <Link
+                    className="p-0 m-0 h-fit"
+                    href={`/dashboard-detalhado/${reservoirData[5]}`}
+                    key={reservoirData[0]}
+                  >
+                    <div key={index}>
+                      <ModeloVazao
+                        className="hover:scale-[1.03] hover:ease-in-out transition duration-100"
+                        vazao={padronizarValor(reservoirData[4])}
                         maximo={60}
                         nome={reservoirData[0]}
                         tipo={reservoirData[2]}
